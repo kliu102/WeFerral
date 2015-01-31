@@ -25,7 +25,7 @@ namespace :maxmind do
   namespace :binary_ip_geodata do
     desc "Download the binary GeoIP data from Maxmind"
     task :download => :rake_helper do
-      relative_path = "app/download_new?edition_id=133&suffix=tar.gz&license_key=FIehRDN0GDQl"
+      relative_path = Settings.maxmind.try(:path)
       uri = URI("http://www.maxmind.com/#{relative_path}")
 
       file = download_file(uri, "/tmp/binarygeocitydata.tar.gz")
@@ -35,7 +35,7 @@ namespace :maxmind do
 
     desc "Download the binary GeoIP data from Maxmind to the shared directory"
     task :download_to_shared => :rake_helper do
-      relative_path = "app/download_new?edition_id=133&suffix=tar.gz&license_key=FIehRDN0GDQl"
+      relative_path = Settings.maxmind.try(:path)
       uri = URI("http://www.maxmind.com/#{relative_path}")
 
       file = download_file(uri, "/tmp/binarygeocitydata.tar.gz")
