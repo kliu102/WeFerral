@@ -29,6 +29,10 @@ gem 'bcrypt'
 
 gem 'rails_config'
 
+gem 'uuidtools'
+gem 'aasm'
+gem 'geokit-rails'
+gem 'geoip'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
