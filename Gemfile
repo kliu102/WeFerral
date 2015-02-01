@@ -33,6 +33,7 @@ gem 'uuidtools'
 gem 'aasm'
 gem 'geokit-rails'
 gem 'geoip'
+gem 'activeuuid', git: 'https://github.com/jashmenn/activeuuid.git'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

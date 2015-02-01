@@ -1,6 +1,6 @@
-class DeviseCreateCustomers < ActiveRecord::Migration
-  def change
-    create_table(:customers) do |t|
+class AddDeviseToMerchants < ActiveRecord::Migration
+  def self.up
+    change_table(:merchants) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -31,12 +31,19 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       # t.datetime :locked_at
 
 
-      t.timestamps
+      # Uncomment below if timestamps were not included in your original model.
+      # t.timestamps
     end
 
-    add_index :customers, :email,                unique: true
-    add_index :customers, :reset_password_token, unique: true
-    # add_index :customers, :confirmation_token,   unique: true
-    # add_index :customers, :unlock_token,         unique: true
+    add_index :merchants, :email,                unique: true
+    add_index :merchants, :reset_password_token, unique: true
+    # add_index :merchants, :confirmation_token,   unique: true
+    # add_index :merchants, :unlock_token,         unique: true
+  end
+
+  def self.down
+    # By default, we don't want to make any assumption about how to roll back a migration when your
+    # model already existed. Please edit below which fields you would like to remove in this migration.
+    raise ActiveRecord::IrreversibleMigration
   end
 end
