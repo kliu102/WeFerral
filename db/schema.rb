@@ -32,10 +32,15 @@ ActiveRecord::Schema.define(version: 20150201000955) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
-    t.uuid     "uuid",       limit: 16, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.uuid     "uuid",        limit: 16, null: false
+    t.integer  "merchant_id", limit: 4,  null: false
+    t.datetime "start_at",               null: false
+    t.datetime "expired_at",             null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "campaigns", ["uuid"], name: "index_campaigns_on_uuid", unique: true, using: :btree
 
   create_table "consumers", force: :cascade do |t|
     t.datetime "created_at",                                      null: false
