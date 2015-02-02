@@ -1,7 +1,7 @@
-class Campaign < ActiveRecord::Base
+class CampaignPledge < ActiveRecord::Base
   include ActiveUUID::UUID
   after_initialize {self.uuid = self.create_uuid if self.uuid.nil? }
 
-  belongs_to :merchant
-  has_many :campaign_pledges
+  belongs_to :campaign
+  has_many :commercials, :referrals
 end

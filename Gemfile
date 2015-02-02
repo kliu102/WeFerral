@@ -34,6 +34,7 @@ gem 'geokit-rails'
 gem 'geoip'
 gem 'activeuuid', git: 'https://github.com/jashmenn/activeuuid.git'
 gem 'social-share-button'
+gem 'rqrcode_png'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

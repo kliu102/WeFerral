@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :referrals
+
+  resources :commercials
+
+  resources :campaign_pledges
+
   resources :campaigns
 
   devise_for :merchants
