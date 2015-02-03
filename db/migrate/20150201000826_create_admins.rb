@@ -1,6 +1,7 @@
 class CreateAdmins < ActiveRecord::Migration
   def self.up
     create_table :admins do |t|
+      t.uuid :uuid, null: false
 
       t.timestamps null: false
     end

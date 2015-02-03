@@ -7,5 +7,6 @@ class Consumer < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :referrals, :transactions
+  has_many :referrals
+  has_many :transactions
 end

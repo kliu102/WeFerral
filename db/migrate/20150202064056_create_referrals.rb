@@ -5,11 +5,14 @@ class CreateReferrals < ActiveRecord::Migration
       t.integer :campaign_pledge_id, null:false
       t.integer :parent_consumer_id, null:true
       t.uuid :uuid, null:false
+      t.string :status, null:false
+      t.string :reason, null:true
+      t.text :qr_code, null:true
 
       t.timestamps null: false
     end
 
-    add_index :referrals, :uuid,                unique: true
+    add_index :referrals, :uuid, unique: true
   end
 
   def self.down
