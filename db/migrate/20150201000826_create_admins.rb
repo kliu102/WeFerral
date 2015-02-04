@@ -6,7 +6,7 @@ class CreateAdmins < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :admins, :uuid,                unique: true
+    add_index :admins, :uuid, unique: true
   end
 
   def self.down

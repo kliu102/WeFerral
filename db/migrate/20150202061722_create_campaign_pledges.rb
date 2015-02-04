@@ -7,11 +7,12 @@ class CreateCampaignPledges < ActiveRecord::Migration
       t.float :total_budge, null:false
       t.float :unit_budge, null:false
       t.integer :campaign_id, null:false
+      t.string :permalink, null: false, unique: true
 
       t.timestamps null: false
     end
 
-    add_index :campaign_pledges, :uuid,                unique: true
+    add_index :campaign_pledges, :uuid, unique: true
   end
 
   def self.down

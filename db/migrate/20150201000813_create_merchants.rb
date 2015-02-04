@@ -7,7 +7,7 @@ class CreateMerchants < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :merchants, :uuid,                unique: true
+    add_index :merchants, :uuid, unique: true
   end
 
   def self.down

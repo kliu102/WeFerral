@@ -7,7 +7,7 @@ class CreateConsumers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :consumers, :uuid,                unique: true
+    add_index :consumers, :uuid, unique: true
   end
 
   def self.down

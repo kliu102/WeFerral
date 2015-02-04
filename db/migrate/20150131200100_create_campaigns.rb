@@ -5,11 +5,12 @@ class CreateCampaigns < ActiveRecord::Migration
       t.integer :merchant_id, null: false
       t.datetime :start_at, null: false
       t.datetime :expired_at, null: false
+      t.string :permalink, null: false, unique: true
 
       t.timestamps null: false
     end
 
-    add_index :campaigns, :uuid,                unique: true
+    add_index :campaigns, :uuid, unique: true
   end
 
   def self.down

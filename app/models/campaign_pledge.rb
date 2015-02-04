@@ -3,5 +3,6 @@ class CampaignPledge < ActiveRecord::Base
   after_initialize {self.uuid = SecureRandom.uuid if self.uuid.nil? }
 
   belongs_to :campaign
-  has_many :commercials, :referrals
+  has_many :commercials
+  has_many :referrals
 end
