@@ -1,8 +1,8 @@
 class CreateTransactions < ActiveRecord::Migration
   def self.up
     create_table :transactions do |t|
-      t.integer :consumer_id, null: false
-      t.integer :campaign_pledge_id, null: true
+      t.belongs_to :consumer, index: true
+      t.belongs_to :campaign_pledge, index: true
       t.float :amount, null: false
       t.uuid :uuid, null: false
 

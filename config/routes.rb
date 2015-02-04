@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   resources :commercials
 
-  resources :campaign_pledges
-  get 'campaign_pledges/:permalink' => 'campaign_pledges#refer', as: 'campaign_pledges_refer'
+  # resources :campaign_pledges
+  get 'campaign_pledges/:permalink' => 'campaign_pledges#show', as: 'campaign_pledge'
 
   resources :campaigns
   get 'campaigns/:permalink' => 'campaigns#refer', as: 'campaign_refer'

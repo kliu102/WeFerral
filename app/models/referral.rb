@@ -4,6 +4,7 @@ class Referral < ActiveRecord::Base
   after_initialize {self.uuid = SecureRandom.uuid if self.uuid.nil? }
 
   belongs_to :consumer
+  belongs_to :campaign
   dragonfly_accessor :qr_code
 
   aasm :column => :status do

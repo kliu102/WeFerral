@@ -6,7 +6,7 @@ class CreateCampaignPledges < ActiveRecord::Migration
       t.datetime :expired_at, null:false
       t.float :total_budge, null:false
       t.float :unit_budge, null:false
-      t.integer :campaign_id, null:false
+      t.belongs_to :campaign, index:true
       t.string :permalink, null: false, unique: true
 
       t.timestamps null: false

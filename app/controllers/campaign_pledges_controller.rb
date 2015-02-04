@@ -10,6 +10,7 @@ class CampaignPledgesController < ApplicationController
   # GET /campaign_pledges/1
   # GET /campaign_pledges/1.json
   def show
+
   end
 
   # GET /campaign_pledges/new

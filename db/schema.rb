@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202065216) do
+ActiveRecord::Schema.define(version: 20150204231127) do
 
   create_table "admins", force: :cascade do |t|
     t.uuid     "uuid",                   limit: 16,               null: false
@@ -39,17 +39,18 @@ ActiveRecord::Schema.define(version: 20150202065216) do
     t.datetime "expired_at",              null: false
     t.float    "total_budge", limit: 24,  null: false
     t.float    "unit_budge",  limit: 24,  null: false
-    t.integer  "campaign_id", limit: 4,   null: false
+    t.integer  "campaign_id", limit: 4
     t.string   "permalink",   limit: 255, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
+  add_index "campaign_pledges", ["campaign_id"], name: "index_campaign_pledges_on_campaign_id", using: :btree
   add_index "campaign_pledges", ["uuid"], name: "index_campaign_pledges_on_uuid", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
     t.uuid     "uuid",        limit: 16,  null: false
-    t.integer  "merchant_id", limit: 4,   null: false
+    t.integer  "merchant_id", limit: 4
     t.datetime "start_at",                null: false
     t.datetime "expired_at",              null: false
     t.string   "permalink",   limit: 255, null: false
@@ -57,16 +58,32 @@ ActiveRecord::Schema.define(version: 20150202065216) do
     t.datetime "updated_at",              null: false
   end
 
+  add_index "campaigns", ["merchant_id"], name: "index_campaigns_on_merchant_id", using: :btree
   add_index "campaigns", ["uuid"], name: "index_campaigns_on_uuid", unique: true, using: :btree
 
   create_table "commercials", force: :cascade do |t|
-    t.integer  "campaign_pledge_id", limit: 4,  null: false
+    t.integer  "campaign_pledge_id", limit: 4
     t.uuid     "uuid",               limit: 16, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
 
+  add_index "commercials", ["campaign_pledge_id"], name: "index_commercials_on_campaign_pledge_id", using: :btree
   add_index "commercials", ["uuid"], name: "index_commercials_on_uuid", unique: true, using: :btree
+
+  create_table "consumer_actions", force: :cascade do |t|
+    t.uuid     "uuid",               limit: 16, null: false
+    t.integer  "consumer_id",        limit: 4
+    t.integer  "campaign_pledge_id", limit: 4
+    t.integer  "referral_id",        limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "consumer_actions", ["campaign_pledge_id"], name: "index_consumer_actions_on_campaign_pledge_id", using: :btree
+  add_index "consumer_actions", ["consumer_id"], name: "index_consumer_actions_on_consumer_id", using: :btree
+  add_index "consumer_actions", ["referral_id"], name: "index_consumer_actions_on_referral_id", using: :btree
+  add_index "consumer_actions", ["uuid"], name: "index_consumer_actions_on_uuid", using: :btree
 
   create_table "consumers", force: :cascade do |t|
     t.uuid     "uuid",                   limit: 16,                null: false
@@ -111,9 +128,9 @@ ActiveRecord::Schema.define(version: 20150202065216) do
   add_index "merchants", ["uuid"], name: "index_merchants_on_uuid", unique: true, using: :btree
 
   create_table "referrals", force: :cascade do |t|
-    t.integer  "consumer_id",        limit: 4,     null: false
+    t.integer  "consumer_id",        limit: 4
     t.integer  "campaign_pledge_id", limit: 4
-    t.integer  "campaign_id",        limit: 4,     null: false
+    t.integer  "campaign_id",        limit: 4
     t.integer  "parent_consumer_id", limit: 4
     t.uuid     "uuid",               limit: 16,    null: false
     t.string   "status",             limit: 255,   null: false
@@ -123,10 +140,13 @@ ActiveRecord::Schema.define(version: 20150202065216) do
     t.datetime "updated_at",                       null: false
   end
 
+  add_index "referrals", ["campaign_id"], name: "index_referrals_on_campaign_id", using: :btree
+  add_index "referrals", ["consumer_id"], name: "index_referrals_on_consumer_id", using: :btree
+  add_index "referrals", ["parent_consumer_id"], name: "index_referrals_on_parent_consumer_id", using: :btree
   add_index "referrals", ["uuid"], name: "index_referrals_on_uuid", unique: true, using: :btree
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "consumer_id",        limit: 4,  null: false
+    t.integer  "consumer_id",        limit: 4
     t.integer  "campaign_pledge_id", limit: 4
     t.float    "amount",             limit: 24, null: false
     t.uuid     "uuid",               limit: 16, null: false
@@ -134,6 +154,8 @@ ActiveRecord::Schema.define(version: 20150202065216) do
     t.datetime "updated_at",                    null: false
   end
 
+  add_index "transactions", ["campaign_pledge_id"], name: "index_transactions_on_campaign_pledge_id", using: :btree
+  add_index "transactions", ["consumer_id"], name: "index_transactions_on_consumer_id", using: :btree
   add_index "transactions", ["uuid"], name: "index_transactions_on_uuid", unique: true, using: :btree
 
 end
