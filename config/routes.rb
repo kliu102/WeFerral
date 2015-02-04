@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :commercials
 
   resources :campaign_pledges
+  get 'campaign_pledges/:permalink' => 'campaign_pledges#refer', as: 'campaign_pledges_refer'
 
   resources :campaigns
+  get 'campaigns/:permalink' => 'campaigns#refer', as: 'campaign_refer'
 
   devise_for :merchants
   devise_for :admins
