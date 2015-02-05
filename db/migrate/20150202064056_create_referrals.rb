@@ -7,8 +7,7 @@ class CreateReferrals < ActiveRecord::Migration
       t.string :status, null:false
       t.string :reason, null:true
       t.text :qr_code, null:true
-      t.integer :referable_id, index: true
-      t.string :referable_type
+      t.references :referable, polymorphic: true, index: true
 
       t.timestamps null: false
     end

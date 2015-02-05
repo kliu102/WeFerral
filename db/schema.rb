@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 20150204231127) do
 
   add_index "referrals", ["consumer_id"], name: "index_referrals_on_consumer_id", using: :btree
   add_index "referrals", ["parent_id"], name: "index_referrals_on_parent_id", using: :btree
-  add_index "referrals", ["referable_id"], name: "index_referrals_on_referable_id", using: :btree
+  add_index "referrals", ["referable_type", "referable_id"], name: "index_referrals_on_referable_type_and_referable_id", using: :btree
   add_index "referrals", ["uuid"], name: "index_referrals_on_uuid", using: :btree
 
   create_table "transactions", force: :cascade do |t|
