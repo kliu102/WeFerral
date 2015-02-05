@@ -2,18 +2,16 @@ class CreateReferrals < ActiveRecord::Migration
   def self.up
     create_table :referrals do |t|
       t.belongs_to :consumer, index:true
-      t.references :referable, ploymorphic:true, index: true
-      t.belongs_to :campaign, index:true
       t.references :parent, null:true, index: true
-      t.uuid :uuid, null:false
+      t.uuid :uuid, null:false, index: true, unique: true
       t.string :status, null:false
       t.string :reason, null:true
       t.text :qr_code, null:true
+      t.integer :referable_id, index: true
+      t.string :referable_type
 
       t.timestamps null: false
     end
-
-    add_index :referrals, :uuid, unique: true
   end
 
   def self.down
