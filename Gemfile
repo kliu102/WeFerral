@@ -38,6 +38,8 @@ gem 'social-share-button'
 gem 'rqrcode_png'
 gem 'dragonfly'
 gem 'paperclip'
+gem 'resque-scheduler'
+gem 'bootstrap-sass'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

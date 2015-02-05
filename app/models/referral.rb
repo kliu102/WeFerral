@@ -1,4 +1,6 @@
 class Referral < ActiveRecord::Base
+  extend Dragonfly::Model
+
   has_many :subordinates, class_name: 'Referral', foreign_key: 'parent_id'
   belongs_to :parent, class_name: 'Referral'
   include ActiveUUID::UUID

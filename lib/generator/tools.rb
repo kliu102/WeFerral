@@ -76,7 +76,7 @@ class Generator::Tools
   def self.create_consumers(n)
     start = Consumer.count
     n.times do |i|
-      m = create_consumer(i + start)
+      create_consumer(i + start)
     end
   end
 end

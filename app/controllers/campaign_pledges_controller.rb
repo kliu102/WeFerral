@@ -1,4 +1,5 @@
 class CampaignPledgesController < ApplicationController
+  include ReferralsHelper
   before_action :set_campaign_pledge, only: [:show, :edit, :update, :destroy]
 
   # GET /campaign_pledges
@@ -10,6 +11,8 @@ class CampaignPledgesController < ApplicationController
   # GET /campaign_pledges/1
   # GET /campaign_pledges/1.json
   def show
+    @referral_uuid = validate_referral_uuid(params[:referral_uuid])
+    puts campaign_pledge_url
 
   end
 
