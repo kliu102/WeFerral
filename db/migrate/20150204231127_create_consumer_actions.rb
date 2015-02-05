@@ -3,8 +3,8 @@ class CreateConsumerActions < ActiveRecord::Migration
     create_table :consumer_actions do |t|
       t.uuid :uuid, null: false, index:true
       t.belongs_to :consumer, index: true
-      t.belongs_to :campaign_pledge, index: true
-      t.belongs_to :referral, index: true
+      t.belongs_to :campaign_pledge, index: true, null: false
+      t.belongs_to :referral, index: true, null: true
 
       t.timestamps null: false
     end

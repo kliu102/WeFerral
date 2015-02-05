@@ -4,5 +4,5 @@ class CampaignPledge < ActiveRecord::Base
 
   belongs_to :campaign
   has_many :commercials
-  has_many :referrals
+  has_many :referrals, as: :referable
 end

@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20150204231127) do
   create_table "consumer_actions", force: :cascade do |t|
     t.uuid     "uuid",               limit: 16, null: false
     t.integer  "consumer_id",        limit: 4
-    t.integer  "campaign_pledge_id", limit: 4
+    t.integer  "campaign_pledge_id", limit: 4,  null: false
     t.integer  "referral_id",        limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
@@ -128,21 +128,22 @@ ActiveRecord::Schema.define(version: 20150204231127) do
   add_index "merchants", ["uuid"], name: "index_merchants_on_uuid", unique: true, using: :btree
 
   create_table "referrals", force: :cascade do |t|
-    t.integer  "consumer_id",        limit: 4
-    t.integer  "campaign_pledge_id", limit: 4
-    t.integer  "campaign_id",        limit: 4
-    t.integer  "parent_consumer_id", limit: 4
-    t.uuid     "uuid",               limit: 16,    null: false
-    t.string   "status",             limit: 255,   null: false
-    t.string   "reason",             limit: 255
-    t.text     "qr_code",            limit: 65535
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "consumer_id",  limit: 4
+    t.integer  "referable_id", limit: 4
+    t.integer  "campaign_id",  limit: 4
+    t.integer  "parent_id",    limit: 4
+    t.uuid     "uuid",         limit: 16,    null: false
+    t.string   "status",       limit: 255,   null: false
+    t.string   "reason",       limit: 255
+    t.text     "qr_code",      limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "referrals", ["campaign_id"], name: "index_referrals_on_campaign_id", using: :btree
   add_index "referrals", ["consumer_id"], name: "index_referrals_on_consumer_id", using: :btree
-  add_index "referrals", ["parent_consumer_id"], name: "index_referrals_on_parent_consumer_id", using: :btree
+  add_index "referrals", ["parent_id"], name: "index_referrals_on_parent_id", using: :btree
+  add_index "referrals", ["referable_id"], name: "index_referrals_on_referable_id", using: :btree
   add_index "referrals", ["uuid"], name: "index_referrals_on_uuid", unique: true, using: :btree
 
   create_table "transactions", force: :cascade do |t|

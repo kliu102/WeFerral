@@ -4,4 +4,5 @@ class Campaign < ActiveRecord::Base
 
   belongs_to :merchant
   has_many :campaign_pledges
+  has_many :referrals, as: :referable
 end

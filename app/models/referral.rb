@@ -1,10 +1,12 @@
 class Referral < ActiveRecord::Base
+  has_many :subordinates, class_name: 'Referral', foreign_key: 'parent_id'
+  belongs_to :parent, class_name: 'Referral'
   include ActiveUUID::UUID
   include AASM
   after_initialize {self.uuid = SecureRandom.uuid if self.uuid.nil? }
 
   belongs_to :consumer
-  belongs_to :campaign
+  belongs_to :referable, ploymorphic: true
   dragonfly_accessor :qr_code
 
   aasm :column => :status do
