@@ -1,0 +1,34 @@
+<title>SaleLastMinute - Sign In</title>
+
+<body class="body-green">
+
+<div class="alt-p">
+  <div class="container">
+    <div class="row top-buffer">
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="sign-form">
+          <h3 class="first-child text-center">Sign In To Your Account</h3>
+          <hr>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter email"%>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+              </div>
+              <% if devise_mapping.rememberable? -%>
+                  <div><%= f.check_box :remember_me%> <%= f.label :remember_me %></div>
+              <% end -%>
+              <br>
+              <div><%= f.submit "Sign in", class: "btn btn-color" %></div>
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</div>
+
+</body>
