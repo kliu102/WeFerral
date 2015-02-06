@@ -14,6 +14,14 @@ class Campaign < ActiveRecord::Base
           dependent: :destroy
 
   scope :active, -> { where(status: 'launched') }
+  cattr_accessor :search_scopes do
+    []
+  end
+
+  def self.add_search_scope(name, &block)
+    self.singleton_class.send(:define_method, name.to_sym, &block)
+    search_scopes << name.to_sym
+  end
 
   def self.like_any(fields, values)
     where fields.map { |field|
@@ -22,4 +30,11 @@ class Campaign < ActiveRecord::Base
             }.inject(:or)
           }.inject(:or)
   end
+
+  add_search_scope :in_taxon do |taxon|
+    includes(:classifications).
+        where("campaigns_taxons.taxon_id" => taxon.self_and_descendants.pluck(:id)).
+        order("campaigns_taxons.position ASC")
+  end
+
 end
