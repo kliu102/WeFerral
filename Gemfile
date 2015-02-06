@@ -41,6 +41,7 @@ gem 'paperclip'
 gem 'resque-scheduler'
 gem 'bootstrap-sass'
 gem 'kaminari'
+gem 'ransack'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

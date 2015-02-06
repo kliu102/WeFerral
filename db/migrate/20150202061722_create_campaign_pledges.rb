@@ -11,6 +11,7 @@ class CreateCampaignPledges < ActiveRecord::Migration
       t.string :status, null: false, default: 'inactive', index: true
       t.string :name
       t.text :description
+      t.boolean :is_master, default: false
 
       t.timestamps null: false
     end
