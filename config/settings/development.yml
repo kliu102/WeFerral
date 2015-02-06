@@ -1,0 +1,3 @@
+locale: US
+search:
+  search_class: Core::Search::Base

@@ -6,6 +6,7 @@ class CreateCampaigns < ActiveRecord::Migration
       t.datetime :start_at, null: false
       t.datetime :expired_at, null: false
       t.string :permalink, null: false, unique: true
+      t.string :status, null: false, default: 'inactive', index: true
 
       t.timestamps null: false
     end
