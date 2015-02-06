@@ -1,3 +1,4 @@
 locale: US
+campaigns_per_page: 10
 search:
   search_class: Core::Search::Base

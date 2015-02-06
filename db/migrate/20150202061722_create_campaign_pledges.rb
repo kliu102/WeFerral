@@ -9,6 +9,8 @@ class CreateCampaignPledges < ActiveRecord::Migration
       t.belongs_to :campaign, index:true
       t.string :permalink, null: false, unique: true
       t.string :status, null: false, default: 'inactive', index: true
+      t.string :name
+      t.text :description
 
       t.timestamps null: false
     end

@@ -1,5 +1,5 @@
 module Core
-  module Search
+  module ControllerHelpers
     module Search
       def build_searcher(params)
         search_class.new(params).tap do |searcher|
