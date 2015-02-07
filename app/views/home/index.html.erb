@@ -1,8 +1,0 @@
-<div class="container" data-hook="homepage_campaigns">
-  <% cache(cache_key_for_campaigns) do %>
-    <% @campaigns.each do %>
-    <%= render :partial => 'campaigns/form', :locals => { :products => @products } %>
-      <% end %>
-  <% end %>
-</div>
-

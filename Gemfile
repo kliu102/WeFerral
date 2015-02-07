@@ -39,9 +39,11 @@ gem 'rqrcode_png'
 gem 'dragonfly'
 gem 'paperclip'
 gem 'resque-scheduler'
-gem 'bootstrap-sass'
 gem 'kaminari'
 gem 'ransack'
+gem 'font-awesome-sass'
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'yui-compressor', '~> 0.12.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
