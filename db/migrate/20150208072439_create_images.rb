@@ -1,6 +1,6 @@
-class CreatePhotos < ActiveRecord::Migration
+class CreateImages < ActiveRecord::Migration
   def change
-    create_table :photos do |t|
+    create_table :images do |t|
       t.attachment :image
       t.belongs_to :campaign_pledge, index:true
       t.boolean :is_master, default: false

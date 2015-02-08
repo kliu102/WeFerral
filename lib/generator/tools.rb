@@ -46,7 +46,10 @@ class Generator::Tools
     campaign = Campaign.new(
         permalink: "permalink_#{merchant.name}_#{start}",
         start_at: Time.now,
-        expired_at: Time.now + 7.days
+        expired_at: Time.now + 7.days,
+        title: 'awesome campaign',
+        description: 'What an awesome campaign, Come on!',
+        status: 'launched'
     )
     create_campaign_pledges(campaign)
     merchant.campaigns << campaign
@@ -59,10 +62,20 @@ class Generator::Tools
           start_at: Time.now,
           expired_at: Time.now + 7.days,
           total_budge: 10000,
-          unit_budge: 10
+          unit_budge: 10,
+          title: 'awesome campaign pledge',
+          description: 'What an awesome campaign pledge, Come on!',
+          status: 'launched'
       )
+      create_campaign_pledge_images(campaign_pledge)
       campaign.campaign_pledges << campaign_pledge
     end
+    campaign.campaign_pledges.first.update_attributes(:is_master => true)
+  end
+
+  def self.create_campaign_pledge_images(campaign_pledge)
+    campaign_pledge.images << Image.new(:image_file_name => 'images/master_image.jpg', :is_master => true)
+    campaign_pledge.images << Image.new(:image_file_name => 'images/non_master_image.jpg')
   end
 
   def self.create_consumer(i)

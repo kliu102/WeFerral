@@ -105,6 +105,19 @@ ActiveRecord::Schema.define(version: 20150208072439) do
   add_index "consumers", ["reset_password_token"], name: "index_consumers_on_reset_password_token", unique: true, using: :btree
   add_index "consumers", ["uuid"], name: "index_consumers_on_uuid", unique: true, using: :btree
 
+  create_table "images", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.integer  "campaign_pledge_id", limit: 4
+    t.boolean  "is_master",          limit: 1,   default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "images", ["campaign_pledge_id"], name: "index_images_on_campaign_pledge_id", using: :btree
+
   create_table "merchants", force: :cascade do |t|
     t.string   "name",                   limit: 255,              null: false
     t.uuid     "uuid",                   limit: 16,               null: false
@@ -125,19 +138,6 @@ ActiveRecord::Schema.define(version: 20150208072439) do
   add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true, using: :btree
   add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true, using: :btree
   add_index "merchants", ["uuid"], name: "index_merchants_on_uuid", unique: true, using: :btree
-
-  create_table "photos", force: :cascade do |t|
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
-    t.integer  "image_file_size",    limit: 4
-    t.datetime "image_updated_at"
-    t.integer  "campaign_pledge_id", limit: 4
-    t.boolean  "is_master",          limit: 1,   default: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-  end
-
-  add_index "photos", ["campaign_pledge_id"], name: "index_photos_on_campaign_pledge_id", using: :btree
 
   create_table "referrals", force: :cascade do |t|
     t.integer  "consumer_id",    limit: 4

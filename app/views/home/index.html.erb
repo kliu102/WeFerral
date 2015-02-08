@@ -1,7 +1,7 @@
 <div class="container">
   <% if @featured_campaigns %>
     <div id="featured_campaigns" class="row">
-      <h3>Featured Products</h3>
+      <h3>Featured Campaigns</h3>
       <hr>
       <ul class="carousel">
         <% @featured_campaigns.each do |campaign| %>
@@ -13,7 +13,7 @@
 
   <% if @campaigns %>
     <div id="latest-campaigns" class="row">
-      <h3>Latest Products</h3>
+      <h3>Latest Campaigns</h3>
       <hr>
       <ul class="carousel">
         <% @campaigns.sort_by{ |campaign| campaign.created_at }.reverse.each do |campaign| %>

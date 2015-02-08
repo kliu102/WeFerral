@@ -1,7 +1,7 @@
 ch:
   my_account: "账户"
-  sign_out: "注销"
+  sign_out: "退出登录"
   sign_up: "注册"
-  sign_in: "登入"
+  sign_in: "登录"
   no_campaigns_found: "没有找到推广信息"
   search_results: "搜索结果"

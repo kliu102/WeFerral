@@ -13,7 +13,7 @@ class Campaign < ActiveRecord::Base
           foreign_key: :campaign_id
 
   scope :active, -> { where(status: 'launched') }
-  delegate :master_photo, to :master_pledge
+  delegate :master_image, to: :master_pledge
 
   cattr_accessor :search_scopes do
     []

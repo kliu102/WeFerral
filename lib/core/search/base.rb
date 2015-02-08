@@ -15,7 +15,7 @@ module Core
         @campaigns_scope = get_base_scope
         curr_page = page || 1
 
-        @campaigns = @campaigns_scope.includes([:master])
+        @campaigns = @campaigns_scope.includes([:master_pledge])
         @campaigns = @campaigns.page(curr_page).per(per_page)
       end
 
