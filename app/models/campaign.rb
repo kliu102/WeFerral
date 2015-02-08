@@ -4,16 +4,16 @@ class Campaign < ActiveRecord::Base
 
   attr_accessor :referral_uuid
 
-  belongs_to :merchant
+  belongs_to :merchant, dependent: :destroy
   has_many :campaign_pledges
   has_many :referrals, as: :referable
   has_one :master_pledge, -> { where is_master: true },
           inverse_of: :campaign,
           class_name: 'CampaignPledge',
-          foreign_key: :campaign_id,
-          dependent: :destroy
+          foreign_key: :campaign_id
 
   scope :active, -> { where(status: 'launched') }
+  delegate :master_photo, to :master_pledge
 
   cattr_accessor :search_scopes do
     []

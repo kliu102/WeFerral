@@ -1,0 +1,6 @@
+<li id="campaign_<%= campaign.id %>" class="columns four" data-hook="featured_campaigns_list_item">
+<div class="campaign-image">
+  <%= link_to campaign_photo(campaign), campaign %>
+</div>
+<%= link_to truncate(campaign.title, :length => 50), campaign, :title => campaign.title %>
+</li>

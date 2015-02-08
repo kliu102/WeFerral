@@ -1,5 +1,25 @@
-<div class="container" data-hook="homepage_campaigns">
-  <% cache(cache_key_for_campaigns) do %>
-      <%= render :partial => 'shared/campaigns', :locals => { :campaigns => @campaigns } %>
+<div class="container">
+  <% if @featured_campaigns %>
+    <div id="featured_campaigns" class="row">
+      <h3>Featured Products</h3>
+      <hr>
+      <ul class="carousel">
+        <% @featured_campaigns.each do |campaign| %>
+          <%= render 'campaign', :campaign => campaign %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @campaigns %>
+    <div id="latest-campaigns" class="row">
+      <h3>Latest Products</h3>
+      <hr>
+      <ul class="carousel">
+        <% @campaigns.sort_by{ |campaign| campaign.created_at }.reverse.each do |campaign| %>
+          <%= render 'campaign', :campaign => campaign %>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 </div>

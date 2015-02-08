@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204231127) do
+ActiveRecord::Schema.define(version: 20150208072439) do
 
   create_table "admins", force: :cascade do |t|
     t.uuid     "uuid",                   limit: 16,               null: false
@@ -34,23 +34,19 @@ ActiveRecord::Schema.define(version: 20150204231127) do
   add_index "admins", ["uuid"], name: "index_admins_on_uuid", unique: true, using: :btree
 
   create_table "campaign_pledges", force: :cascade do |t|
-    t.uuid     "uuid",                 limit: 16,                         null: false
-    t.datetime "start_at",                                                null: false
-    t.datetime "expired_at",                                              null: false
-    t.float    "total_budge",          limit: 24,                         null: false
-    t.float    "unit_budge",           limit: 24,                         null: false
-    t.integer  "campaign_id",          limit: 4
-    t.string   "permalink",            limit: 255,                        null: false
-    t.string   "status",               limit: 255,   default: "inactive", null: false
-    t.string   "title",                limit: 255
-    t.text     "description",          limit: 65535
-    t.boolean  "is_master",            limit: 1,     default: false
-    t.string   "picture_file_name",    limit: 255
-    t.string   "picture_content_type", limit: 255
-    t.integer  "picture_file_size",    limit: 4
-    t.datetime "picture_updated_at"
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.uuid     "uuid",        limit: 16,                         null: false
+    t.datetime "start_at",                                       null: false
+    t.datetime "expired_at",                                     null: false
+    t.float    "total_budge", limit: 24,                         null: false
+    t.float    "unit_budge",  limit: 24,                         null: false
+    t.integer  "campaign_id", limit: 4
+    t.string   "permalink",   limit: 255,                        null: false
+    t.string   "status",      limit: 255,   default: "inactive", null: false
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.boolean  "is_master",   limit: 1,     default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "campaign_pledges", ["campaign_id"], name: "index_campaign_pledges_on_campaign_id", using: :btree
@@ -129,6 +125,19 @@ ActiveRecord::Schema.define(version: 20150204231127) do
   add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true, using: :btree
   add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true, using: :btree
   add_index "merchants", ["uuid"], name: "index_merchants_on_uuid", unique: true, using: :btree
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.integer  "campaign_pledge_id", limit: 4
+    t.boolean  "is_master",          limit: 1,   default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "photos", ["campaign_pledge_id"], name: "index_photos_on_campaign_pledge_id", using: :btree
 
   create_table "referrals", force: :cascade do |t|
     t.integer  "consumer_id",    limit: 4
