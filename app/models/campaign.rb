@@ -7,13 +7,14 @@ class Campaign < ActiveRecord::Base
   belongs_to :merchant
   has_many :campaign_pledges
   has_many :referrals, as: :referable
-  has_one :master, -> { where is_master: true },
+  has_one :master_pledge, -> { where is_master: true },
           inverse_of: :campaign,
           class_name: 'CampaignPledge',
           foreign_key: :campaign_id,
           dependent: :destroy
 
   scope :active, -> { where(status: 'launched') }
+
   cattr_accessor :search_scopes do
     []
   end

@@ -1,0 +1,5 @@
+<div class="container" data-hook="homepage_campaigns">
+  <% cache(cache_key_for_campaigns) do %>
+      <%= render :partial => 'shared/campaigns', :locals => { :campaigns => @campaigns } %>
+  <% end %>
+</div>

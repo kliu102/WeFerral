@@ -1,0 +1,8 @@
+<% if campaigns.empty? %>
+    <%= I18n.t(:no_products_found) %>
+<% elsif params.key?(:keywords) %>
+    <h6 class="search-results-title"><%=I18n.t(:search_results, :keywords => h(params[:keywords])) %></h6>
+<% end %>
+
+
+<%= render :partial => 'shared/campaigns_carousel', :locals => { :campaigns => campaigns[0...Settings.carousel_size] } %>

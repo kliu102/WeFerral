@@ -51,7 +51,7 @@ module Core
       # method should return new scope based on base_scope
       def get_campaigns_conditions_for(base_scope, query)
         unless query.blank?
-          base_scope = base_scope.like_any([:name, :description], query.split)
+          base_scope = base_scope.like_any([:title, :description], query.split)
         end
         base_scope
       end

@@ -3,3 +3,5 @@ ch:
   sign_out: "注销"
   sign_up: "注册"
   sign_in: "登入"
+  no_campaigns_found: "没有找到推广信息"
+  search_results: "搜索结果"
