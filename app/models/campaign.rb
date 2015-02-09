@@ -38,4 +38,7 @@ class Campaign < ActiveRecord::Base
         order("campaigns_taxons.position ASC")
   end
 
+  def lowest_award
+    self.campaign_pledges.map(&:unit_budge).min rescue nil
+  end
 end

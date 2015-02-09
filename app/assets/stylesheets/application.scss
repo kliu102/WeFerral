@@ -24,3 +24,82 @@ footer {
 header {
   display:block;
 }
+/* --------------------------------------
+   Typography
+   -------------------------------------- */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizedlegibility;
+}
+.well .page-header {
+  margin-top: 0;
+}
+
+.well .page-header h1 {
+  margin-top: 0;
+}
+
+ul.unstyled {
+  list-style: none;
+  padding: 0;
+}
+
+#featured_campaigns {
+  padding: 50px 15px;
+}
+
+/* --------------------------------------
+   Carousel
+   -------------------------------------- */
+
+#myCarousel {
+  margin-top: 60px;
+}
+
+.carousel-caption {
+  font-size: 24px;
+}
+
+.carousel-caption h4 {
+  font-size: 32px;
+}
+
+#myCarousel .item { height: 400px; }
+.carousel-inner .item {
+  background: top center no-repeat;
+}
+
+.carousel-inner .item activ{
+  background: top center no-repeat;
+}
+
+.thumbnails {
+  margin: 20px 0;
+}
+
+.thumbnails {
+  position: relative;
+}
+
+.thumbnails h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+  line-height: 20px;
+}
+
+.thumbnails .price {
+  font-size: 22px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px;
+}
+
+.thumbnails .price sup {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.thumbnail span.glyphicon {
+  margin-right: 5px;
+}
