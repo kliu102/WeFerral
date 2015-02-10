@@ -10,6 +10,9 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
+    if @campaigns.nil?
+      render $ERROR_INFO
+    end
   end
 
   # GET /campaigns/new
