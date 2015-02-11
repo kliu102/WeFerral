@@ -9,3 +9,7 @@ ch:
   choice: "选择"
   share: "分享"
   willing_to_share: "我要分享"
+  devise:
+    failure:
+      consumer:
+        unauthenticated: "请您登录"

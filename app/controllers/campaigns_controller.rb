@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
     before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_consumer!, only: [:refer]
 
     # GET /campaigns
     # GET /campaigns.json
@@ -14,6 +15,7 @@ class CampaignsController < ApplicationController
             render $ERROR_INFO
         end
         @current_consumer = current_consumer
+        @abc = 2
     end
 
     def refer

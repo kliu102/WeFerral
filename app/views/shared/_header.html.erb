@@ -60,7 +60,7 @@
                   <a href="#"><span class="glyphicon glyphicon-briefcase"></span> Billing</a>
                 </li>
                 <li>
-                  <%= link_to destroy_consumer_session_path do %>
+                  <%= link_to destroy_consumer_session_path, :method => :delete do %>
                       <span class="glyphicon glyphicon-off"></span>
                       <%= I18n.t(:sign_out) %>
                   <% end %>
