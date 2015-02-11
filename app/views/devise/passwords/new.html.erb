@@ -11,9 +11,10 @@
               <%= devise_error_messages! %>
               <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter email"%>
+                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter email" %>
               </div>
               <br>
+
               <div><%= f.submit "Send me reset password instructions", class: "btn btn-color" %></div>
           <% end %>
 

@@ -21,17 +21,15 @@ footer {
   padding: 20px;
 }
 
-#myCampaign {
-  margin-top: 60px;
-}
-
 /* --------------------------------------
    Typography
    -------------------------------------- */
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizedlegibility;
+  padding-top: 60px;
 }
+
 .well .page-header {
   margin-top: 0;
 }
@@ -49,10 +47,6 @@ ul.unstyled {
    Carousel
    -------------------------------------- */
 
-#myCarousel {
-  margin-top: 60px;
-}
-
 .carousel-caption {
   font-size: 24px;
 }
@@ -61,12 +55,15 @@ ul.unstyled {
   font-size: 32px;
 }
 
-#myCarousel .item { height: 400px; }
+#myCarousel .item {
+  height: 400px;
+}
+
 .carousel-inner .item {
   background: top center no-repeat;
 }
 
-.carousel-inner .item .active{
+.carousel-inner .item .active {
   background: top center no-repeat;
 }
 
@@ -99,4 +96,10 @@ ul.unstyled {
 
 .thumbnail span.glyphicon {
   margin-right: 5px;
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }

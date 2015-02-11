@@ -19,30 +19,30 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 Dir["#{File.dirname(__FILE__)}/fabricators/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
-  # Remove this line if you don't want RSpec's should and should_not
-  # methods or matchers
-  require 'rspec/expectations'
-  config.include RSpec::Matchers
+    # Remove this line if you don't want RSpec's should and should_not
+    # methods or matchers
+    require 'rspec/expectations'
+    config.include RSpec::Matchers
 
-  # == Mock Framework
-  config.mock_with :rspec
+    # == Mock Framework
+    config.mock_with :rspec
 
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-    DatabaseCleaner.strategy = :transaction
-  end
+    config.before(:suite) do
+        DatabaseCleaner.clean_with(:truncation)
+        DatabaseCleaner.strategy = :transaction
+    end
 
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
+    config.before(:each) do
+        DatabaseCleaner.start
+    end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
+    config.after(:each) do
+        DatabaseCleaner.clean
+    end
 
-  def spec_for_adapter(&block)
-    switcher = ActiveUUID::SpecSupport::SpecForAdapter.new()
-    yield switcher
-    switcher.run(connection)
-  end
+    def spec_for_adapter(&block)
+        switcher = ActiveUUID::SpecSupport::SpecForAdapter.new()
+        yield switcher
+        switcher.run(connection)
+    end
 end
