@@ -13,6 +13,7 @@ class CampaignsController < ApplicationController
     if @campaigns.nil?
       render $ERROR_INFO
     end
+    @current_consumer = current_consumer
   end
 
   # GET /campaigns/new

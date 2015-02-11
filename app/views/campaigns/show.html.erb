@@ -23,6 +23,7 @@
     </div>
   </div>
   <div class="col-md-12">
+    <% if @current_consumer %>
     <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
       <span class="glyphicon glyphicon-hand-up"></span>
       <%= I18n.t :share %>
@@ -46,5 +47,11 @@
       <%= I18n.t :share %>
       <i class="fa fa-twitter"></i>
     </a>
+    <% else %>
+      <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+        <span class="glyphicon glyphicon-hand-up"></span>
+        <%= I18n.t :willing_to_share %>
+      </a>
+    <% end %>
   </div>
 </div>

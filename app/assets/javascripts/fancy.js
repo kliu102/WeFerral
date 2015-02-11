@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready($(function () {
   // Hide flash messages after timeout
   setTimeout('$(".flash").fadeOut(1000)', 5000);
 
@@ -12,4 +12,4 @@ $(function () {
     $('.nav-tabs li')[0].setAttribute("class", "active");
     $('#tab0')[0].setAttribute("class", "tab-pane active");
   }
-});
+}));

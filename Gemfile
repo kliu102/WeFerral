@@ -33,7 +33,6 @@ gem 'rails_config'
 gem 'aasm'
 gem 'geokit-rails'
 gem 'geoip'
-gem 'activeuuid', git: 'https://github.com/jashmenn/activeuuid.git'
 gem 'social-share-button'
 gem 'rqrcode_png'
 gem 'dragonfly'
@@ -42,6 +41,7 @@ gem 'resque-scheduler'
 gem 'kaminari'
 gem 'ransack'
 gem 'font-awesome-sass'
+gem 'jquery-turbolinks'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'yui-compressor', '~> 0.12.0'
 
@@ -61,4 +61,8 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+# vender gems
+gem 'activeuuid', '0.5.0', :path => 'vendor/gems/activeuuid-0.5.0'
+
 

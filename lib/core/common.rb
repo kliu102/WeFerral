@@ -4,12 +4,9 @@ module Core
       Settings.locale || 'US'
     end
 
-    def try_current_user
-      if respond_to?(:current_user)
-        site_current_user
-        # This one will be defined by Devise
-      elsif respond_to?(:current_heron_user)
-        current_site_user
+    def try_current_consumer
+      if respond_to?(:current_consumer)
+        current_consumer
       else
         nil
       end
