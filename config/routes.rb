@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
     resources :referrals
-
-    resources :commercials
-
     resources :campaign_pledges
     # get 'campaign_pledges/:permalink' => 'campaign_pledges#show', as: 'campaign_pledge'
 
