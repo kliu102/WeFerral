@@ -12,8 +12,8 @@ class Referral < ActiveRecord::Base
     belongs_to :referable, polymorphic: true
 
     def referral_url
-        referable = self.referable
-        root_url.concat("#{referable.class.name.downcase}s/#{referable.permalink}?uuid=#{self.uuid}")
+        referable_path = eval("#{self.referable.class.name.downcase}_path(self.referable)")
+        root_url.concat referable_path[1...referable_path.length].concat("?uuid=#{self.uuid}")
     end
 
     aasm :column => :status do
