@@ -1,57 +1,60 @@
 <div class="row" id="myCampaign">
-  <div class="col-md-8">
-    <div class="tabbable">
-      <%= content_tag(:h3, @campaign.title) %>
-      <ul class="nav nav-tabs">
-        <% (0...@campaign.campaign_pledges.size).each do |i| %>
-            <li><a href="#tab<%= i %>" data-toggle="tab"><%= "#{I18n.t :choice} #{i+1}" %></a></li>
-        <% end %>
-      </ul>
-      <div class="tab-content">
-        <% (0...@campaign.campaign_pledges.size).each do |i| %>
-            <% campaign_pledge = @campaign.campaign_pledges[i] %>
-            <div class="tab-pane" id="tab<%= i %>">
-              <div class="thumbnail">
-                <%= content_tag(:h4, campaign_pledge.title) %>
-                <% image_path = campaign.master_image.image_file_name rescue 'images/master_image.jpg' %>
-                <%= tag(:img, class: "thumbnail pull-left", src: (root_url.concat image_path)) %>
-                <%= content_tag(:p, campaign_pledge.description) %>
-              </div>
+    <div class="col-md-8">
+        <div class="tabbable">
+            <%= content_tag(:h3, @campaign.title) %>
+            <ul class="nav nav-tabs">
+                <% (0...@campaign.campaign_pledges.size).each do |i| %>
+                  <li><a href="#tab<%= i %>" data-toggle="tab"><%= "#{I18n.t :choice} #{i+1}" %></a></li>
+                <% end %>
+            </ul>
+            <div class="tab-content">
+                <% (0...@campaign.campaign_pledges.size).each do |i| %>
+                  <% campaign_pledge = @campaign.campaign_pledges[i] %>
+                  <div class="tab-pane" id="tab<%= i %>">
+                      <div class="thumbnail">
+                          <%= content_tag(:h4, campaign_pledge.title) %>
+                          <% image_path = campaign.master_image.image_file_name rescue 'images/master_image.jpg' %>
+                          <%= tag(:img, class: "thumbnail pull-left", src: (root_url.concat image_path)) %>
+                          <%= content_tag(:p, campaign_pledge.description) %>
+                      </div>
+                  </div>
+                <% end %>
             </div>
-        <% end %>
-      </div>
+        </div>
     </div>
-  </div>
-  <div class="col-md-12">
-    <% if current_consumer %>
-        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-          <span class="glyphicon glyphicon-hand-up"></span>
-          <%= I18n.t :share %>
-          <i class="fa fa-weixin"></i>
-        </a>
+    <div class="col-md-12">
+        <% if current_consumer %>
+          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+              <span class="glyphicon glyphicon-hand-up"></span>
+              <%= I18n.t :share %>
+              <i class="fa fa-weixin"></i>
+          </a>
 
-        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-          <span class="glyphicon glyphicon-hand-up"></span>
-          <%= I18n.t :share %>
-          <i class="fa fa-weibo"></i>
-        </a>
+          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+              <span class="glyphicon glyphicon-hand-up"></span>
+              <%= I18n.t :share %>
+              <i class="fa fa-weibo"></i>
+          </a>
 
-        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-          <span class="glyphicon glyphicon-hand-up"></span>
-          <%= I18n.t :share %>
-          <i class="fa fa-facebook"></i>
-        </a>
+          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+              <span class="glyphicon glyphicon-hand-up"></span>
+              <%= I18n.t :share %>
+              <i class="fa fa-facebook"></i>
+          </a>
 
-        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-          <span class="glyphicon glyphicon-hand-up"></span>
-          <%= I18n.t :share %>
-          <i class="fa fa-twitter"></i>
-        </a>
-    <% else %>
-        <%= link_to campaign_refer_path(@campaign.permalink), role: 'button', class: 'btn btn-warning btn-lg' do %>
-            <span class="glyphicon glyphicon-hand-up"></span>
-            <%= I18n.t :willing_to_share %>
+          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+              <span class="glyphicon glyphicon-hand-up"></span>
+              <%= I18n.t :share %>
+              <i class="fa fa-twitter"></i>
+          </a>
+        <% else %>
+          <%= form_for :referral, url: campaign_referral_path(@campaign.permalink), :html => { :id => 'referral_form' } do |f| %>
+            <%= hidden_field(:campaign, :referral_uuid) %>
+            <%= link_to 'javascript:{}', onclick: "document.getElementById('referral_form').submit();", role: 'button', class: 'btn btn-warning btn-lg' do %>
+              <span class="glyphicon glyphicon-hand-up"></span>
+              <%= I18n.t :willing_to_share %>
+            <% end %>
+          <% end %>
         <% end %>
-    <% end %>
-  </div>
+    </div>
 </div>

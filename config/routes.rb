@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     # get 'campaign_pledges/:permalink' => 'campaign_pledges#show', as: 'campaign_pledge'
 
     resources :campaigns
-    get 'referral/campaigns/:permalink' => 'campaigns#refer', as: 'campaign_refer'
+    post 'campaigns/referral/:permalink' => 'campaigns#refer', as: 'campaign_referral'
 
     devise_for :merchants
     devise_for :admins
