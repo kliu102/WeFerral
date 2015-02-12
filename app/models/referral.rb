@@ -8,14 +8,17 @@ class Referral < ActiveRecord::Base
     include AASM
     after_initialize do
         self.uuid = SecureRandom.uuid if self.uuid.nil?
-        self.relative_url = eval("#{self.referable.class.name.downcase}_path(self.referable)").concat("?uuid=#{self.uuid}") if self.relative_url.nil?
+        if self.relative_url.nil?
+            controller_path = eval("#{self.referable.class.name.downcase}_path(self.referable)")
+            self.relative_url = controller_path[1...controller_path.length].concat("?uuid=#{self.uuid}")
+        end
     end
 
     belongs_to :consumer
     belongs_to :referable, polymorphic: true
 
     def referral_url
-        root_url[0...root_url.length - 1].concat self.relative_url
+        root_url.concat self.relative_url
     end
 
     aasm :column => :status do
