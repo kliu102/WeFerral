@@ -6,7 +6,6 @@ class CreateReferrals < ActiveRecord::Migration
             t.uuid :uuid, null: false, index: true, unique: true
             t.string :status, null: false
             t.string :reason, null: true
-            t.text :qr_code, null: true
             t.references :referable, polymorphic: true, index: true
 
             t.timestamps null: false

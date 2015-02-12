@@ -14,12 +14,21 @@ class CampaignsController < ApplicationController
         if @campaign.nil?
             render $ERROR_INFO
         end
+        @referral = @campaign.find_referral_by_consumer(current_consumer)
         @campaign.referral_uuid = params[:uuid]
     end
 
     def refer
         @campaign = Campaign.find_by_permalink(params[:permalink])
-        @campaign
+        referral = Referral.find_by_uuid(params[:referral_uuid])
+        parent_id =
+        if @campaign.is_referral_valid?(referral)
+            referral.parent_id
+        else
+            nil
+        end
+        @campaign.referrals.create(:consumer_id => current_consumer.id, :parent_id => parent_id)
+        redirect_to campaign_path(@campaign)
     end
 
     # GET /campaigns/new

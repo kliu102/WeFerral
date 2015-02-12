@@ -1,5 +1,6 @@
 class Referral < ActiveRecord::Base
     extend Dragonfly::Model
+    include Rails.application.routes.url_helpers
 
     has_many :subordinates, class_name: 'Referral', foreign_key: 'parent_id'
     belongs_to :parent, class_name: 'Referral'
@@ -9,7 +10,11 @@ class Referral < ActiveRecord::Base
 
     belongs_to :consumer
     belongs_to :referable, polymorphic: true
-    dragonfly_accessor :qr_code
+
+    def referral_url
+        referable = self.referable
+        root_url.concat("#{referable.class.name.downcase}s/#{referable.permalink}?uuid=#{self.uuid}")
+    end
 
     aasm :column => :status do
         state :new, :initial => true

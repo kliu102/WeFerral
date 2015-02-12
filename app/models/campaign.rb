@@ -41,4 +41,14 @@ class Campaign < ActiveRecord::Base
     def lowest_award
         self.campaign_pledges.map(&:unit_budge).min rescue nil
     end
+
+    def find_referral_by_consumer(consumer)
+        return nil if consumer.nil?
+        self.referrals.where(:consumer_id => consumer.id).first
+    end
+
+    def is_referral_valid?(referral)
+        return false if referral.nil?
+        referral.referable_id == self.id && referral.referable_type == self.class.name
+    end
 end
