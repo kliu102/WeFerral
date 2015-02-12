@@ -6,14 +6,16 @@ class Referral < ActiveRecord::Base
     belongs_to :parent, class_name: 'Referral'
     include ActiveUUID::UUID
     include AASM
-    after_initialize { self.uuid = SecureRandom.uuid if self.uuid.nil? }
+    after_initialize do
+        self.uuid = SecureRandom.uuid if self.uuid.nil?
+        self.relative_url = eval("#{self.referable.class.name.downcase}_path(self.referable)").concat("?uuid=#{self.uuid}") if self.relative_url.nil?
+    end
 
     belongs_to :consumer
     belongs_to :referable, polymorphic: true
 
     def referral_url
-        referable_path = eval("#{self.referable.class.name.downcase}_path(self.referable)")
-        root_url.concat referable_path[1...referable_path.length].concat("?uuid=#{self.uuid}")
+        root_url[0...root_url.length - 1].concat self.relative_url
     end
 
     aasm :column => :status do

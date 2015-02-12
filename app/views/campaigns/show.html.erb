@@ -47,6 +47,7 @@
               <%= I18n.t :share %>
               <i class="fa fa-twitter"></i>
           </a>
+          <%= @referral.referral_url%>
         <% else %>
           <%= form_for :referral, url: campaign_referral_path(@campaign.permalink), :html => { :id => 'referral_form' } do |f| %>
             <%= hidden_field(:campaign, :referral_uuid) %>

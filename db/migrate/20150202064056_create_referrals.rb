@@ -7,6 +7,7 @@ class CreateReferrals < ActiveRecord::Migration
             t.string :status, null: false
             t.string :reason, null: true
             t.references :referable, polymorphic: true, index: true
+            t.string :relative_url, null: false
 
             t.timestamps null: false
         end
