@@ -11,11 +11,10 @@ class CampaignsController < ApplicationController
     # GET /campaigns/1
     # GET /campaigns/1.json
     def show
-        if @campaigns.nil?
+        if @campaign.nil?
             render $ERROR_INFO
         end
-        @current_consumer = current_consumer
-        @abc = 2
+        @campaign.referral_uuid = params[:uuid]
     end
 
     def refer
