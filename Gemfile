@@ -42,7 +42,7 @@ gem 'kaminari'
 gem 'ransack'
 gem 'font-awesome-sass'
 gem 'jquery-turbolinks'
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeuuid'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'yui-compressor', '~> 0.12.0'
 
@@ -64,6 +64,6 @@ group :development, :test do
 end
 
 # vender gems
-gem 'activeuuid', '0.5.0', :path => 'vendor/gems/activeuuid-0.5.0'
+gem 'activeadmin', :path => 'vendor/gems/activeadmin'
 
 
