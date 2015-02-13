@@ -1,0 +1,12 @@
+sqlite3:
+  adapter: sqlite3
+  database: ":memory:"
+postgresql:
+  adapter: postgresql
+  host: localhost
+  database: activeuuid_test
+mysql:
+  adapter: mysql2
+  username: root
+  database: activeuuid_test
+  encoding: utf8

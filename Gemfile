@@ -42,7 +42,7 @@ gem 'kaminari'
 gem 'ransack'
 gem 'font-awesome-sass'
 gem 'jquery-turbolinks'
-gem 'activeuuid'
+# gem 'activeuuid'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'yui-compressor', '~> 0.12.0'
 
@@ -65,5 +65,6 @@ end
 
 # vender gems
 gem 'activeadmin', :path => 'vendor/gems/activeadmin'
+gem 'activeuuid', :path => 'vendor/gems/activeuuid'
 
 
