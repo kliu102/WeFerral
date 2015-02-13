@@ -74,8 +74,8 @@ class Generator::Tools
     end
 
     def self.create_campaign_pledge_images(campaign_pledge)
-        campaign_pledge.images << Image.new(:image_file_name => 'images/master_image.jpg', :is_master => true)
-        campaign_pledge.images << Image.new(:image_file_name => 'images/non_master_image.jpg')
+        campaign_pledge.images << Image.new(:image_file_name => "images/samples/#{rand(11) + 1}.jpg", :is_master => true)
+        campaign_pledge.images << Image.new(:image_file_name => "images/samples/#{rand(11) + 1}.jpg")
     end
 
     def self.create_consumer(i)
