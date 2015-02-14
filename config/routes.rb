@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+    devise_for :admin_users, ActiveAdmin::Devise.config
+    ActiveAdmin.routes(self)
     resources :referrals
     resources :campaign_pledges
     # get 'campaign_pledges/:permalink' => 'campaign_pledges#show', as: 'campaign_pledge'
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
     post 'campaigns/referral/:permalink' => 'campaigns#refer', as: 'campaign_referral'
 
     devise_for :merchants
-    devise_for :admins
     devise_for :users
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
