@@ -1,4 +1,5 @@
 class Campaign < ActiveRecord::Base
+    is_impressionable
     include ActiveUUID::UUID
     after_initialize { self.uuid = SecureRandom.uuid if self.uuid.nil? }
 

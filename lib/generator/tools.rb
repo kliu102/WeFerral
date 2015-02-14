@@ -48,7 +48,7 @@ class Generator::Tools
                 start_at: Time.now,
                 expired_at: Time.now + 7.days,
                 title: 'awesome campaign',
-                description: 'What an awesome campaign, Come on!',
+                description: 'Logs an impression... and I use that term loosely. It can log page impressions (technically action impressions), but it is not limited to that. You can log impressions multiple times per request. And you can also attach it to a model. The goal of this project is to provide customizable stats that are immediately accessible in your application as opposed to using Google Analytics and pulling data using their API. You can attach custom messages to impressions. No reporting yet.. this thingy just creates the data.',
                 status: 'launched'
         )
         create_campaign_pledges(campaign)
@@ -64,7 +64,7 @@ class Generator::Tools
                     total_budge: 10000,
                     unit_budge: 10,
                     title: 'awesome campaign pledge',
-                    description: 'What an awesome campaign pledge, Come on!',
+                    description: 'Logs an impression... and I use that term loosely. It can log page impressions (technically action impressions), but it is not limited to that. You can log impressions multiple times per request. And you can also attach it to a model. The goal of this project is to provide customizable stats that are immediately accessible in your application as opposed to using Google Analytics and pulling data using their API. You can attach custom messages to impressions. No reporting yet.. this thingy just creates the data.',
                     status: 'launched'
             )
             create_campaign_pledge_images(campaign_pledge)
