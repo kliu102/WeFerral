@@ -2,7 +2,7 @@ module Core
     module Search
         class Base
             attr_accessor :properties
-            attr_accessor :current_consumer
+            attr_accessor :current_user
             attr_accessor :current_locale
 
             def initialize(params)

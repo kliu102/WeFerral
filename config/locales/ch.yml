@@ -29,5 +29,5 @@ ch:
     email: Email
   devise:
     failure:
-      consumer:
+      user:
         unauthenticated: "请您登录"

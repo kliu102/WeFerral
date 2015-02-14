@@ -14,7 +14,7 @@ class Referral < ActiveRecord::Base
         end
     end
 
-    belongs_to :consumer
+    belongs_to :user
     belongs_to :referable, polymorphic: true
 
     def referral_url

@@ -1,6 +1,8 @@
 class CampaignsController < ApplicationController
+    impressionist :actions=>[:show,:index]
+
     before_action :set_campaign, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_consumer!, only: [:refer]
+    before_action :authenticate_user!, only: [:refer]
 
     # GET /campaigns
     # GET /campaigns.json
@@ -14,7 +16,7 @@ class CampaignsController < ApplicationController
         if @campaign.nil?
             render $ERROR_INFO
         end
-        @referral = @campaign.find_referral_by_consumer(current_consumer)
+        @referral = @campaign.find_referral_by_user(current_user)
         @campaign.referral_uuid = params[:uuid]
     end
 
@@ -27,7 +29,7 @@ class CampaignsController < ApplicationController
         else
             nil
         end
-        @campaign.referrals.create(:consumer_id => current_consumer.id, :parent_id => parent_id)
+        @campaign.referrals.create(:user_id => current_user.id, :parent_id => parent_id)
         redirect_to campaign_path(@campaign)
     end
 

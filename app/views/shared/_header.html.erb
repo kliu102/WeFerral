@@ -41,14 +41,14 @@
       </form>
 
       <ul class="nav navbar-nav pull-right">
-        <% if consumer_signed_in? %>
+        <% if user_signed_in? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-user"></span> My Account<strong class="caret"></strong>
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <%= link_to edit_consumer_registration_path do %>
+                  <%= link_to edit_user_registration_path do %>
                       <span class="glyphicon glyphicon-wrench"></span>
                       <%= I18n.t(:my_account) %>
                   <% end %>
@@ -60,7 +60,7 @@
                   <a href="#"><span class="glyphicon glyphicon-briefcase"></span> Billing</a>
                 </li>
                 <li>
-                  <%= link_to destroy_consumer_session_path, :method => :delete do %>
+                  <%= link_to destroy_user_session_path, :method => :delete do %>
                       <span class="glyphicon glyphicon-off"></span>
                       <%= I18n.t(:sign_out) %>
                   <% end %>
@@ -68,8 +68,8 @@
               </ul>
             </li>
         <% else %>
-            <li><%= link_to I18n.t(:sign_up), new_consumer_registration_path, :class => "pull-right" %></li>
-            <li><%= link_to I18n.t(:sign_in), new_consumer_session_path, :class => "pull-right" %></li>
+            <li><%= link_to I18n.t(:sign_up), new_user_registration_path, :class => "pull-right" %></li>
+            <li><%= link_to I18n.t(:sign_in), new_user_session_path, :class => "pull-right" %></li>
         <% end %>
       </ul>
     </div>

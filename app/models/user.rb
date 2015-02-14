@@ -1,4 +1,4 @@
-class Consumer < ActiveRecord::Base
+class User < ActiveRecord::Base
     include ActiveUUID::UUID
     after_initialize { self.uuid = SecureRandom.uuid if self.uuid.nil? }
 

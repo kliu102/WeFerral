@@ -78,18 +78,18 @@ class Generator::Tools
         campaign_pledge.images << Image.new(:image_file_name => "images/samples/#{rand(11) + 1}.jpg")
     end
 
-    def self.create_consumer(i)
-        Consumer.create!(
+    def self.create_user(i)
+        User.create!(
                 :email => "user_#{i}@name.com",
                 :password => 'password',
                 :password_confirmation => 'password',
         )
     end
 
-    def self.create_consumers(n)
-        start = Consumer.count
+    def self.create_users(n)
+        start = User.count
         n.times do |i|
-            create_consumer(i + start)
+            create_user(i + start)
         end
     end
 end

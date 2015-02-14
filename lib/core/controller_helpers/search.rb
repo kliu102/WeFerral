@@ -3,7 +3,7 @@ module Core
         module Search
             def build_searcher(params)
                 search_class.new(params).tap do |searcher|
-                    searcher.current_consumer = try_current_consumer
+                    searcher.current_user = try_current_user
                     searcher.current_locale = current_locale
                 end
             end

@@ -70,41 +70,6 @@ ActiveRecord::Schema.define(version: 20150214050033) do
   add_index "campaigns", ["status"], name: "index_campaigns_on_status", using: :btree
   add_index "campaigns", ["uuid"], name: "index_campaigns_on_uuid", unique: true, using: :btree
 
-  create_table "consumer_actions", force: :cascade do |t|
-    t.uuid     "uuid",               limit: 16, null: false
-    t.integer  "consumer_id",        limit: 4
-    t.integer  "campaign_pledge_id", limit: 4,  null: false
-    t.integer  "referral_id",        limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
-  add_index "consumer_actions", ["campaign_pledge_id"], name: "index_consumer_actions_on_campaign_pledge_id", using: :btree
-  add_index "consumer_actions", ["consumer_id"], name: "index_consumer_actions_on_consumer_id", using: :btree
-  add_index "consumer_actions", ["referral_id"], name: "index_consumer_actions_on_referral_id", using: :btree
-  add_index "consumer_actions", ["uuid"], name: "index_consumer_actions_on_uuid", using: :btree
-
-  create_table "consumers", force: :cascade do |t|
-    t.uuid     "uuid",                   limit: 16,                null: false
-    t.float    "balance",                limit: 24,  default: 0.0, null: false
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.string   "email",                  limit: 255, default: "",  null: false
-    t.string   "encrypted_password",     limit: 255, default: "",  null: false
-    t.string   "reset_password_token",   limit: 255
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,   null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-  end
-
-  add_index "consumers", ["email"], name: "index_consumers_on_email", unique: true, using: :btree
-  add_index "consumers", ["reset_password_token"], name: "index_consumers_on_reset_password_token", unique: true, using: :btree
-  add_index "consumers", ["uuid"], name: "index_consumers_on_uuid", unique: true, using: :btree
-
   create_table "images", force: :cascade do |t|
     t.string   "image_file_name",    limit: 255
     t.string   "image_content_type", limit: 255
@@ -165,7 +130,7 @@ ActiveRecord::Schema.define(version: 20150214050033) do
   add_index "merchants", ["uuid"], name: "index_merchants_on_uuid", unique: true, using: :btree
 
   create_table "referrals", force: :cascade do |t|
-    t.integer  "consumer_id",    limit: 4
+    t.integer  "user_id",        limit: 4
     t.integer  "parent_id",      limit: 4
     t.uuid     "uuid",           limit: 16,  null: false
     t.string   "status",         limit: 255, null: false
@@ -177,13 +142,13 @@ ActiveRecord::Schema.define(version: 20150214050033) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "referrals", ["consumer_id"], name: "index_referrals_on_consumer_id", using: :btree
   add_index "referrals", ["parent_id"], name: "index_referrals_on_parent_id", using: :btree
   add_index "referrals", ["referable_type", "referable_id"], name: "index_referrals_on_referable_type_and_referable_id", using: :btree
+  add_index "referrals", ["user_id"], name: "index_referrals_on_user_id", using: :btree
   add_index "referrals", ["uuid"], name: "index_referrals_on_uuid", using: :btree
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "consumer_id",        limit: 4
+    t.integer  "user_id",            limit: 4
     t.integer  "campaign_pledge_id", limit: 4
     t.float    "amount",             limit: 24, null: false
     t.uuid     "uuid",               limit: 16, null: false
@@ -192,7 +157,42 @@ ActiveRecord::Schema.define(version: 20150214050033) do
   end
 
   add_index "transactions", ["campaign_pledge_id"], name: "index_transactions_on_campaign_pledge_id", using: :btree
-  add_index "transactions", ["consumer_id"], name: "index_transactions_on_consumer_id", using: :btree
+  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
   add_index "transactions", ["uuid"], name: "index_transactions_on_uuid", unique: true, using: :btree
+
+  create_table "user_actions", force: :cascade do |t|
+    t.uuid     "uuid",               limit: 16, null: false
+    t.integer  "user_id",            limit: 4
+    t.integer  "campaign_pledge_id", limit: 4,  null: false
+    t.integer  "referral_id",        limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "user_actions", ["campaign_pledge_id"], name: "index_user_actions_on_campaign_pledge_id", using: :btree
+  add_index "user_actions", ["referral_id"], name: "index_user_actions_on_referral_id", using: :btree
+  add_index "user_actions", ["user_id"], name: "index_user_actions_on_user_id", using: :btree
+  add_index "user_actions", ["uuid"], name: "index_user_actions_on_uuid", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.uuid     "uuid",                   limit: 16,                null: false
+    t.float    "balance",                limit: 24,  default: 0.0, null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "email",                  limit: 255, default: "",  null: false
+    t.string   "encrypted_password",     limit: 255, default: "",  null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,   null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uuid"], name: "index_users_on_uuid", unique: true, using: :btree
 
 end
