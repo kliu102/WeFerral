@@ -18,7 +18,7 @@ module WeFerral
 
         # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
         # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-        config.i18n.default_locale = :ch
+        config.i18n.default_locale = 'zh-CN'
         # config.assets.css_compressor = :yui
         # config.assets.js_compressor = :uglifier
 
