@@ -48,12 +48,6 @@
               <i class="fa fa-twitter"></i>
           </a>
           <%= social_share_button_tag(@referral.referral_url) %>
-          <span class='st_sharethis_large' displayText='ShareThis'></span>
-          <span class='st_facebook_large' displayText='Facebook'></span>
-          <span class='st_twitter_large' displayText='Tweet'></span>
-          <span class='st_linkedin_large' displayText='LinkedIn'></span>
-          <span class='st_pinterest_large' displayText='Pinterest'></span>
-          <span class='st_email_large' displayText='Email'></span>
         <% else %>
           <%= form_for :referral, url: campaign_referral_path(@campaign.permalink), :html => { :id => 'referral_form' } do |f| %>
             <%= hidden_field(:campaign, :referral_uuid) %>

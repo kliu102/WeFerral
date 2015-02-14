@@ -1,6 +1,4 @@
 class CampaignsController < ApplicationController
-    impressionist :actions=>[:show,:index]
-
     before_action :set_campaign, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:refer]
 
@@ -13,11 +11,9 @@ class CampaignsController < ApplicationController
     # GET /campaigns/1
     # GET /campaigns/1.json
     def show
-        if @campaign.nil?
-            render $ERROR_INFO
-        end
         @referral = @campaign.find_referral_by_user(current_user)
         @campaign.referral_uuid = params[:uuid]
+        impressionist(@campaign, params[:uuid])
     end
 
     def refer
