@@ -48,6 +48,9 @@
               <i class="fa fa-twitter"></i>
           </a>
           <%= social_share_button_tag(@referral.referral_url) %>
+          <pre>
+            <%= @referral.referral_url%>
+          </pre>
         <% else %>
           <%= form_for :referral, url: campaign_referral_path(@campaign.permalink), :html => { :id => 'referral_form' } do |f| %>
             <%= hidden_field(:campaign, :referral_uuid) %>

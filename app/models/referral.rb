@@ -10,7 +10,7 @@ class Referral < ActiveRecord::Base
         self.uuid = SecureRandom.uuid if self.uuid.nil?
         if self.relative_url.nil?
             controller_path = eval("#{self.referable.class.name.downcase}_path(self.referable)")
-            self.relative_url = controller_path[1...controller_path.length].concat("?uuid=#{self.uuid}")
+            self.relative_url = controller_path.concat("?uuid=#{self.uuid}")
         end
     end
 
@@ -18,7 +18,7 @@ class Referral < ActiveRecord::Base
     belongs_to :referable, polymorphic: true
 
     def referral_url
-        root_url.concat self.relative_url
+        File.join(root_url, self.relative_url)
     end
 
     aasm :column => :status do

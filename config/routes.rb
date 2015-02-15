@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  ActiveAdmin.routes(self)
     resources :referrals
     resources :campaign_pledges
     # get 'campaign_pledges/:permalink' => 'campaign_pledges#show', as: 'campaign_pledge'
@@ -65,4 +64,5 @@ Rails.application.routes.draw do
     #     resources :products
     #   end
     root to: "home#index"
+    ActiveAdmin.routes(self)
 end
