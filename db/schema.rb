@@ -11,27 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214050033) do
+ActiveRecord::Schema.define(version: 20150215004341) do
 
-  create_table "admins", force: :cascade do |t|
-    t.uuid     "uuid",                   limit: 16,               null: false
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace",     limit: 255
+    t.text     "body",          limit: 65535
+    t.string   "resource_id",   limit: 255,   null: false
+    t.string   "resource_type", limit: 255,   null: false
+    t.integer  "author_id",     limit: 4
+    t.string   "author_type",   limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
-  add_index "admins", ["uuid"], name: "index_admins_on_uuid", unique: true, using: :btree
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "campaign_pledges", force: :cascade do |t|
     t.uuid     "uuid",        limit: 16,                         null: false
@@ -54,19 +49,19 @@ ActiveRecord::Schema.define(version: 20150214050033) do
   add_index "campaign_pledges", ["uuid"], name: "index_campaign_pledges_on_uuid", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
-    t.uuid     "uuid",        limit: 16,                         null: false
-    t.integer  "merchant_id", limit: 4
-    t.datetime "start_at",                                       null: false
-    t.datetime "expired_at",                                     null: false
-    t.string   "permalink",   limit: 255,                        null: false
-    t.string   "status",      limit: 255,   default: "inactive", null: false
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.uuid     "uuid",             limit: 16,                         null: false
+    t.integer  "merchant_user_id", limit: 4
+    t.datetime "start_at",                                            null: false
+    t.datetime "expired_at",                                          null: false
+    t.string   "permalink",        limit: 255,                        null: false
+    t.string   "status",           limit: 255,   default: "inactive", null: false
+    t.string   "title",            limit: 255
+    t.text     "description",      limit: 65535
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
-  add_index "campaigns", ["merchant_id"], name: "index_campaigns_on_merchant_id", using: :btree
+  add_index "campaigns", ["merchant_user_id"], name: "index_campaigns_on_merchant_user_id", using: :btree
   add_index "campaigns", ["status"], name: "index_campaigns_on_status", using: :btree
   add_index "campaigns", ["uuid"], name: "index_campaigns_on_uuid", unique: true, using: :btree
 
@@ -108,7 +103,7 @@ ActiveRecord::Schema.define(version: 20150214050033) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}, using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
-  create_table "merchants", force: :cascade do |t|
+  create_table "merchant_users", force: :cascade do |t|
     t.string   "name",                   limit: 255,              null: false
     t.uuid     "uuid",                   limit: 16,               null: false
     t.datetime "created_at",                                      null: false
@@ -125,9 +120,9 @@ ActiveRecord::Schema.define(version: 20150214050033) do
     t.string   "last_sign_in_ip",        limit: 255
   end
 
-  add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true, using: :btree
-  add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true, using: :btree
-  add_index "merchants", ["uuid"], name: "index_merchants_on_uuid", unique: true, using: :btree
+  add_index "merchant_users", ["email"], name: "index_merchant_users_on_email", unique: true, using: :btree
+  add_index "merchant_users", ["reset_password_token"], name: "index_merchant_users_on_reset_password_token", unique: true, using: :btree
+  add_index "merchant_users", ["uuid"], name: "index_merchant_users_on_uuid", unique: true, using: :btree
 
   create_table "referrals", force: :cascade do |t|
     t.integer  "user_id",        limit: 4

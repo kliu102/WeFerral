@@ -1,4 +1,4 @@
-class Admin < ActiveRecord::Base
+class MerchantUser < ActiveRecord::Base
     include ActiveUUID::UUID
     after_initialize { self.uuid = SecureRandom.uuid if self.uuid.nil? }
 
@@ -6,4 +6,5 @@ class Admin < ActiveRecord::Base
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
+    has_many :campaigns
 end

@@ -5,7 +5,7 @@ class Campaign < ActiveRecord::Base
 
     attr_accessor :referral_uuid
 
-    belongs_to :merchant, dependent: :destroy
+    belongs_to :merchant_user, dependent: :destroy
     has_many :campaign_pledges
     has_many :referrals, as: :referable
     has_one :master_pledge, -> { where is_master: true },

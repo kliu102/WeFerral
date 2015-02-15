@@ -25,7 +25,7 @@ class Generator::Tools
     # end
 
     def self.create_merchants(n)
-        start = Merchant.count
+        start = MerchantUser.count
         n.times do |i|
             m = create_merchant(i + start)
             create_campaign(m)
@@ -33,7 +33,7 @@ class Generator::Tools
     end
 
     def self.create_merchant(i)
-        Merchant.create!(
+        MerchantUser.create!(
                 :email => "user_#{i}@name.com",
                 :password => 'password',
                 :password_confirmation => 'password',
