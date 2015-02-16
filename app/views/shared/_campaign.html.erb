@@ -1,0 +1,21 @@
+    <div class="tabbable">
+        <%= content_tag(:h3, campaign.title) %>
+        <ul class="nav nav-tabs">
+            <% (0...campaign.campaign_pledges.size).each do |i| %>
+            <li><a href="#tab<%= i %>" data-toggle="tab"><%= "#{I18n.t :choice} #{i+1}" %></a></li>
+            <% end %>
+        </ul>
+        <div class="tab-content">
+            <% (0...campaign.campaign_pledges.size).each do |i| %>
+            <% campaign_pledge = campaign.campaign_pledges[i] %>
+            <div class="tab-pane" id="tab<%= i %>">
+                <div class="thumbnail">
+                    <%= content_tag(:h4, campaign_pledge.title) %>
+                    <% image_path = campaign_pledge.master_image.image_file_name rescue 'images/samples/1.jpg' %>
+                    <%= tag(:img, class: "thumbnail pull-left", src: (root_url.concat image_path)) %>
+                    <%= content_tag(:p, campaign_pledge.description) %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>

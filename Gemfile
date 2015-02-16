@@ -65,7 +65,8 @@ group :development, :test do
 end
 
 # vender gems
-gem 'activeadmin', :path => 'vendor/gems/activeadmin'
+# gem 'activeadmin', :path => 'vendor/gems/activeadmin'
+gem 'activeadmin', :git => 'git@github.com:kliu102/activeadmin.git', :branch => 'master'
 gem 'activeuuid', :path => 'vendor/gems/activeuuid'
 
 

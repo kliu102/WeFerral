@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
     resources :referrals
-    resources :campaign_pledges
+    # resources :campaign_pledges
     # get 'campaign_pledges/:permalink' => 'campaign_pledges#show', as: 'campaign_pledge'
 
-    resources :campaigns
+    resources :campaigns, only: [:index, :show]
     post 'campaigns/referral/:permalink' => 'campaigns#refer', as: 'campaign_referral'
 
     devise_for :merchant_users

@@ -3,6 +3,7 @@ class CreateMerchantUsers < ActiveRecord::Migration
         create_table :merchant_users do |t|
             t.string :name, null: false
             t.uuid :uuid, null: false
+            t.boolean :admin, default: false
 
             t.timestamps null: false
         end

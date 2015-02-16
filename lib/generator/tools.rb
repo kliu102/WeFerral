@@ -34,7 +34,7 @@ class Generator::Tools
 
     def self.create_merchant(i)
         MerchantUser.create!(
-                :email => "user_#{i}@name.com",
+                :email => "user#{i}@gmail.com",
                 :password => 'password',
                 :password_confirmation => 'password',
                 :name => "merchant_#{i}"
