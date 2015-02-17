@@ -43,7 +43,8 @@ gem 'ransack'
 gem 'font-awesome-sass'
 gem 'jquery-turbolinks'
 gem 'impressionist'
-# gem 'activeuuid'
+gem 'rack-mini-profiler'
+gem 'flamegraph'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'yui-compressor', '~> 0.12.0'
 
@@ -62,6 +63,9 @@ group :development, :test do
 
     # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
     gem 'spring'
+    gem 'lol_dba'
+    gem 'bullet'
+    gem 'meta_request'
 end
 
 # vender gems

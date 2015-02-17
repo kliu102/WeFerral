@@ -42,4 +42,12 @@ Rails.application.configure do
     Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
     config.paperclip_defaults = {:storage => :fog, :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"}, :fog_directory => "", :fog_host => "localhost"}
     Paperclip.options[:command_path] = '/usr/local/bin/'
+
+    config.after_initialize do
+        Bullet.enable = true
+        Bullet.alert = ENV['BULLET_ALERT']
+        Bullet.bullet_logger = true
+        Bullet.console = true
+        Bullet.rails_logger = true
+    end
 end
