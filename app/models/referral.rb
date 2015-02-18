@@ -1,9 +1,10 @@
 class Referral < ActiveRecord::Base
     extend Dragonfly::Model
+    is_impressionable :counter_cache => true
     include Rails.application.routes.url_helpers
 
     has_many :subordinates, class_name: 'Referral', foreign_key: 'parent_id'
-    belongs_to :parent, class_name: 'Referral'
+    belongs_to :parent, class_name: 'Referral', counter_cache: true
     include ActiveUUID::UUID
     include AASM
     after_initialize do
@@ -15,7 +16,7 @@ class Referral < ActiveRecord::Base
     end
 
     belongs_to :user
-    belongs_to :referable, polymorphic: true
+    belongs_to :referable, polymorphic: true, counter_cache: true
 
     def referral_url
         File.join(root_url, self.relative_url)

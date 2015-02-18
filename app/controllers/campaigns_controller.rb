@@ -13,6 +13,7 @@ class CampaignsController < ApplicationController
     def show
         @referral = @campaign.find_referral_by_user(current_user)
         @campaign.referral_uuid = params[:uuid]
+        # save referral uuid in the field of messages in impressions
         impressionist(@campaign, params[:uuid])
     end
 

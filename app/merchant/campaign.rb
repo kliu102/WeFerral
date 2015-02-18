@@ -11,6 +11,7 @@ ActiveAdmin.register Campaign, namespace: :merchant do
         column :permalink
         column :start_at
         column :expired_at
+        column :impressions_count
         actions dropdown: true
     end
 

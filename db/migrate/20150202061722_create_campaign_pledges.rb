@@ -12,6 +12,7 @@ class CreateCampaignPledges < ActiveRecord::Migration
             t.string :title
             t.text :description
             t.boolean :is_master, default: false
+            t.integer :referrals_count, default: 0, null: false
 
             t.timestamps null: false
         end

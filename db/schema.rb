@@ -29,19 +29,20 @@ ActiveRecord::Schema.define(version: 20150215004341) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "campaign_pledges", force: :cascade do |t|
-    t.uuid     "uuid",        limit: 16,                         null: false
-    t.datetime "start_at",                                       null: false
-    t.datetime "expired_at",                                     null: false
-    t.float    "total_budge", limit: 24,                         null: false
-    t.float    "unit_budge",  limit: 24,                         null: false
-    t.integer  "campaign_id", limit: 4
-    t.string   "permalink",   limit: 255,                        null: false
-    t.string   "status",      limit: 255,   default: "inactive", null: false
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.boolean  "is_master",   limit: 1,     default: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.uuid     "uuid",            limit: 16,                         null: false
+    t.datetime "start_at",                                           null: false
+    t.datetime "expired_at",                                         null: false
+    t.float    "total_budge",     limit: 24,                         null: false
+    t.float    "unit_budge",      limit: 24,                         null: false
+    t.integer  "campaign_id",     limit: 4
+    t.string   "permalink",       limit: 255,                        null: false
+    t.string   "status",          limit: 255,   default: "inactive", null: false
+    t.string   "title",           limit: 255
+    t.text     "description",     limit: 65535
+    t.boolean  "is_master",       limit: 1,     default: false
+    t.integer  "referrals_count", limit: 4,     default: 0,          null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "campaign_pledges", ["campaign_id"], name: "index_campaign_pledges_on_campaign_id", using: :btree
@@ -49,16 +50,18 @@ ActiveRecord::Schema.define(version: 20150215004341) do
   add_index "campaign_pledges", ["uuid"], name: "index_campaign_pledges_on_uuid", unique: true, using: :btree
 
   create_table "campaigns", force: :cascade do |t|
-    t.uuid     "uuid",             limit: 16,                         null: false
-    t.integer  "merchant_user_id", limit: 4
-    t.datetime "start_at",                                            null: false
-    t.datetime "expired_at",                                          null: false
-    t.string   "permalink",        limit: 255,                        null: false
-    t.string   "status",           limit: 255,   default: "inactive", null: false
-    t.string   "title",            limit: 255
-    t.text     "description",      limit: 65535
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.uuid     "uuid",              limit: 16,                         null: false
+    t.integer  "merchant_user_id",  limit: 4
+    t.datetime "start_at",                                             null: false
+    t.datetime "expired_at",                                           null: false
+    t.string   "permalink",         limit: 255,                        null: false
+    t.string   "status",            limit: 255,   default: "inactive", null: false
+    t.string   "title",             limit: 255
+    t.text     "description",       limit: 65535
+    t.integer  "referrals_count",   limit: 4,     default: 0,          null: false
+    t.integer  "impressions_count", limit: 4,     default: 0,          null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   add_index "campaigns", ["merchant_user_id"], name: "index_campaigns_on_merchant_user_id", using: :btree
@@ -126,16 +129,18 @@ ActiveRecord::Schema.define(version: 20150215004341) do
   add_index "merchant_users", ["uuid"], name: "index_merchant_users_on_uuid", unique: true, using: :btree
 
   create_table "referrals", force: :cascade do |t|
-    t.integer  "user_id",        limit: 4
-    t.integer  "parent_id",      limit: 4
-    t.uuid     "uuid",           limit: 16,  null: false
-    t.string   "status",         limit: 255, null: false
-    t.string   "reason",         limit: 255
-    t.integer  "referable_id",   limit: 4
-    t.string   "referable_type", limit: 255
-    t.string   "relative_url",   limit: 255, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "user_id",           limit: 4
+    t.integer  "parent_id",         limit: 4
+    t.uuid     "uuid",              limit: 16,              null: false
+    t.string   "status",            limit: 255,             null: false
+    t.string   "reason",            limit: 255
+    t.integer  "referable_id",      limit: 4
+    t.string   "referable_type",    limit: 255
+    t.string   "relative_url",      limit: 255,             null: false
+    t.integer  "referrals_count",   limit: 4,   default: 0, null: false
+    t.integer  "impressions_count", limit: 4,   default: 0, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "referrals", ["parent_id"], name: "index_referrals_on_parent_id", using: :btree

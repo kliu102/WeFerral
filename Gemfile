@@ -66,6 +66,7 @@ group :development, :test do
     gem 'lol_dba'
     gem 'bullet'
     gem 'meta_request'
+    gem 'stackprof'
 end
 
 # vender gems

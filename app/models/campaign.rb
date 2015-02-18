@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-    is_impressionable
+    is_impressionable :counter_cache => true
     include ActiveUUID::UUID
     after_initialize { self.uuid = SecureRandom.uuid if self.uuid.nil? }
 

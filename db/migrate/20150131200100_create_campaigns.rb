@@ -9,6 +9,8 @@ class CreateCampaigns < ActiveRecord::Migration
             t.string :status, null: false, default: 'inactive', index: true
             t.string :title
             t.text :description
+            t.integer :referrals_count, default: 0, null: false
+            t.integer :impressions_count, default: 0, null: false
 
             t.timestamps null: false
         end
