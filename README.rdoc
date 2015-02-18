@@ -25,6 +25,8 @@ Things you may want to cover:
 brew install ImageMagick
 brew install mysql
 brew install postgresql
+bundle package --all
+bundle install --local
 
 Generator::Tools.create_merchants(3)
 Generator::Tools.create_users(3)

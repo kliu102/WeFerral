@@ -29,7 +29,7 @@ module Core
 
             protected
             def get_base_scope
-                base_scope = Campaign.active
+                base_scope = Campaign.includes(:campaign_pledges).active.order(:id)
                 base_scope = base_scope.in_taxon(taxon) unless taxon.blank?
                 base_scope = get_campaigns_conditions_for(base_scope, keywords)
                 base_scope = add_search_scopes(base_scope)

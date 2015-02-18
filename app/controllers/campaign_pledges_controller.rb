@@ -68,7 +68,7 @@ class CampaignPledgesController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_campaign_pledge
-        @campaign_pledge = CampaignPledge.find(params[:id])
+        @campaign_pledge = CampaignPledge.includes(:images).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
