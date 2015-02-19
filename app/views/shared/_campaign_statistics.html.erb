@@ -1,0 +1,14 @@
+<%= javascript_include_tag 'jsapi.js', "chartkick" %>
+
+<%= column_chart @campaign.impressions.group_by_day(:created_at).count %>
+
+<%
+   referral_uuids = @campaign.impressions.pluck(:message)
+
+   referral_counts = {
+           :referred => referral_uuids.compact.count,
+           :non_referred => referral_uuids.count - referral_uuids.compact.count
+   }
+%>
+
+<%= pie_chart referral_counts %>

@@ -1,4 +1,14 @@
 zh-CN:
+  active_admin:
+    all: "所有的"
+    active: "有效的"
+    description: "介绍"
+    inactive: "过期的"
+    expired_at: "结束时间"
+    impressions_count: "浏览次数"
+    permalink: "永久链接"
+    start_at: "开始时间"
+    title: "标题"
   campaign: "推广"
   choice: "选择"
   date:

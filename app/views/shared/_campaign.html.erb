@@ -12,7 +12,7 @@
                 <div class="thumbnail">
                     <%= content_tag(:h4, campaign_pledge.title) %>
                     <% image_path = campaign_pledge.master_image.image_file_name rescue 'images/samples/1.jpg' %>
-                    <%= tag(:img, class: "thumbnail pull-left", src: (root_url.concat image_path)) %>
+                    <%= tag(:img, class: "thumbnail pull-left", src: (path_to_image image_path)) %>
                     <%= content_tag(:p, campaign_pledge.description) %>
                 </div>
             </div>
