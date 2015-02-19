@@ -30,12 +30,9 @@ ActiveRecord::Schema.define(version: 20150215004341) do
 
   create_table "campaign_pledges", force: :cascade do |t|
     t.uuid     "uuid",            limit: 16,                         null: false
-    t.datetime "start_at",                                           null: false
-    t.datetime "expired_at",                                         null: false
     t.float    "total_budge",     limit: 24,                         null: false
     t.float    "unit_budge",      limit: 24,                         null: false
     t.integer  "campaign_id",     limit: 4
-    t.string   "permalink",       limit: 255,                        null: false
     t.string   "status",          limit: 255,   default: "inactive", null: false
     t.string   "title",           limit: 255
     t.text     "description",     limit: 65535

@@ -19,6 +19,7 @@ class Campaign < ActiveRecord::Base
     cattr_accessor :search_scopes do
         []
     end
+    accepts_nested_attributes_for :campaign_pledges, :allow_destroy => true, :reject_if => lambda { |a| a[:content].blank?}
 
     def self.add_search_scope(name, &block)
         self.singleton_class.send(:define_method, name.to_sym, &block)

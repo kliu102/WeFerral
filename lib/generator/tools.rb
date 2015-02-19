@@ -58,9 +58,6 @@ class Generator::Tools
     def self.create_campaign_pledges(campaign)
         2.times do |i|
             campaign_pledge = CampaignPledge.new(
-                    permalink: "#{campaign.permalink}_#{i}",
-                    start_at: Time.now,
-                    expired_at: Time.now + 7.days,
                     total_budge: 10000,
                     unit_budge: 10,
                     title: 'awesome campaign pledge',

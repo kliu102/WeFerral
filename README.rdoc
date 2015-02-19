@@ -28,7 +28,7 @@ brew install postgresql
 bundle package --all
 bundle install --local
 
-Generator::Tools.create_merchants(3)
+Generator::Tools.create_merchants(20)
 Generator::Tools.create_users(3)
 
 Please feel free to use a different markup language if you do not plan to run
