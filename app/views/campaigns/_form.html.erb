@@ -24,6 +24,7 @@
       <%= f.fields_for :campaign_pledges do |builder| %>
           <%= render 'campaign_pledges/form', :f => builder %>
       <% end %>
+      <p><%= link_to_add_fields "Add Pledge", f, :campaign_pledges %></p>
       <%= f.submit %>
     </div>
 <% end %>
