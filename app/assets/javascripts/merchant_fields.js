@@ -1,5 +1,6 @@
 function remove_fields(link) {
-
+    $(link).previous("input[type=hidden]").value = "1";
+    $(link).up(".fields").hide();
 }
 
 function add_fields(link, association, content) {
@@ -9,12 +10,3 @@ function add_fields(link, association, content) {
         before: content.replace(regexp, new_id)
     });
 }
-
-$(function() {
-    $('.remove_fields').click(function() {
-        // Some complex code
-        $(this).previous("input[type=hidden]").value = "1";
-        $(this).up(".fields").hide();
-        return false;
-    });
-});

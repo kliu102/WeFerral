@@ -19,7 +19,6 @@
       Description : <%= f.text_area :description %><br />
       start_at    : <%= f.datetime_select :start_at %><br />
       expired_at  : <%= f.datetime_select :expired_at %><br />
-      <p><%= link_to_add_fields "Add Pledge", f, :campaign_pledges %></p>
 
       <hr>
       <%= f.fields_for :campaign_pledges do |builder| %>
