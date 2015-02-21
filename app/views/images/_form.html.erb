@@ -1,6 +1,6 @@
-<p class="fields">
+<div class="fields">
   <%= f.file_field :image %>
-  <%= tag('img', src: "/#{f.object.image.path(:medium)}") %>
+  <%= image_tag f.object.image.url %>
   <%= link_to_remove_fields "remove", f %>
   <%= f.hidden_field :id %>
-</p>
+</div>
