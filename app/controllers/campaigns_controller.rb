@@ -87,6 +87,6 @@ class CampaignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def campaign_params
-        params.require(:campaign).permit(:title, :description, :start_at, :expired_at)
+        params.require(:campaign).permit(:id, :title, :description, :start_at, :expired_at, :permalink, :campaign_pledges_attributes => [:id, :title, :description, :total_budget, :unit_budget, :images_attributes => [:id, :image]])
     end
 end

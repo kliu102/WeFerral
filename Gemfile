@@ -48,7 +48,7 @@ gem 'flamegraph'
 gem 'chartkick'
 gem 'hightop'
 gem 'groupdate'
-
+gem 'fog'
 gem 'lazy_high_charts'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'yui-compressor', '~> 0.12.0'

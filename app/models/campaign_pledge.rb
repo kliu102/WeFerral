@@ -14,4 +14,5 @@ class CampaignPledge < ActiveRecord::Base
             foreign_key: :campaign_pledge_id
 
     scope :active, -> { where(status: 'launched') }
+    accepts_nested_attributes_for :images, :allow_destroy => true #, :reject_if => lambda { |a| a[:content].blank?}
 end
