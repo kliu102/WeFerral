@@ -1,6 +1,6 @@
 module ApplicationHelper
     def link_to_remove_fields(name, f)
-        f.hidden_field(:_destroy) + link_to(name, '#', :onclick => 'remove_fields(this)')
+        f.hidden_field(:_destroy) + link_to(name, '#', :onclick => 'remove_fields(this); return false;')
     end
 
     def link_to_add_fields(name, f, association)
@@ -8,6 +8,6 @@ module ApplicationHelper
         fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
             render(association.to_s + "/form", :f => builder)
         end
-        link_to(name, '#', :onclick => "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+        link_to(name, '#', :onclick => "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\"); return false;")
     end
 end
