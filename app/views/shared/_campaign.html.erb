@@ -1,20 +1,41 @@
-    <div class="tabbable">
-        <%= content_tag(:h3, campaign.title) %>
-        <ul class="nav nav-tabs">
-            <% (0...campaign.campaign_pledges.size).each do |i| %>
-            <li><a href="#tab<%= i %>" data-toggle="tab"><%= "#{I18n.t :choice} #{i+1}" %></a></li>
-            <% end %>
-        </ul>
-        <div class="tab-content">
-            <% (0...campaign.campaign_pledges.size).each do |i| %>
-            <% campaign_pledge = campaign.campaign_pledges[i] %>
-            <div class="tab-pane" id="tab<%= i %>">
-                <div class="thumbnail">
-                    <%= content_tag(:h4, campaign_pledge.title) %>
-                    <%= tag(:img, class: "thumbnail pull-left", src: campaign_pledge.master_image.image.url) %>
-                    <%= content_tag(:p, campaign_pledge.description) %>
-                </div>
-            </div>
-            <% end %>
+<div class="tabbable">
+  <%= content_tag(:h3, campaign.title) %>
+  <ul class="nav nav-tabs">
+    <% (0...campaign.campaign_pledges.size).each do |i| %>
+        <li><a href="#tab<%= i %>" data-toggle="tab"><%= "#{I18n.t :choice} #{i+1}" %></a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% (0...campaign.campaign_pledges.size).each do |i| %>
+        <% campaign_pledge = campaign.campaign_pledges[i] %>
+        <div class="tab-pane" id="tab<%= i %>">
+          <div class="thumbnail">
+            <%= content_tag(:h4, campaign_pledge.title) %>
+            <%= content_tag(:p, campaign_pledge.description) %>
+          </div>
         </div>
+    <% end %>
+  </div>
+</div>
+
+<% if campaign.images %>
+    <div class="carousel slide" id="myCarousel">
+      <!-- Wrapper for slides -->
+      <ol class="carousel-indicators">
+        <% (0...campaign.images.size).each do |i| %>
+            <li data-slide-to=<%= i %> data-target="#myCarousel"></li>
+        <% end %>
+      </ol>
+      <!-- carousel-inner -->
+      <div class="carousel-inner" id="carousel_slides">
+        <% (0...campaign.images.size).each do |i| %>
+            <div class="item" id="carousel_slide<%= i %>" style="background-image: url(<%= campaign.images[i].image.url%>)">
+            </div>
+        <% end %>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" data-slide="prev" href="#myCarousel"><span class="icon-prev"></span></a>
+      <a class="right carousel-control" data-slide="next" href="#myCarousel"><span class="icon-next"></span></a>
     </div>
+    <!-- end myCarousel -->
+<% end %>

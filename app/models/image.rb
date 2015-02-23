@@ -4,5 +4,5 @@ class Image < ActiveRecord::Base
                          :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] },
                          :presence => true,
                          :size => { :in => 0..2.megabytes }
-    belongs_to :campaign_pledge
+    belongs_to :campaign
 end

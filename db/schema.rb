@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215004341) do
+ActiveRecord::Schema.define(version: 20150222040111) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -70,13 +70,13 @@ ActiveRecord::Schema.define(version: 20150215004341) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
-    t.integer  "campaign_pledge_id", limit: 4
+    t.integer  "campaign_id",        limit: 4
     t.boolean  "is_master",          limit: 1,   default: false
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
   end
 
-  add_index "images", ["campaign_pledge_id"], name: "index_images_on_campaign_pledge_id", using: :btree
+  add_index "images", ["campaign_id"], name: "index_images_on_campaign_id", using: :btree
 
   create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type", limit: 255
@@ -144,6 +144,20 @@ ActiveRecord::Schema.define(version: 20150215004341) do
   add_index "referrals", ["referable_type", "referable_id"], name: "index_referrals_on_referable_type_and_referable_id", using: :btree
   add_index "referrals", ["user_id"], name: "index_referrals_on_user_id", using: :btree
   add_index "referrals", ["uuid"], name: "index_referrals_on_uuid", using: :btree
+
+  create_table "taxonomies", force: :cascade do |t|
+    t.string   "name",       limit: 255,             null: false
+    t.integer  "level",      limit: 4,   default: 0, null: false
+    t.integer  "parent_id",  limit: 4
+    t.uuid     "uuid",       limit: 16,              null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "taxonomies", ["level"], name: "index_taxonomies_on_level", using: :btree
+  add_index "taxonomies", ["name"], name: "index_taxonomies_on_name", using: :btree
+  add_index "taxonomies", ["parent_id"], name: "index_taxonomies_on_parent_id", using: :btree
+  add_index "taxonomies", ["uuid"], name: "index_taxonomies_on_uuid", using: :btree
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "user_id",            limit: 4

@@ -1,5 +1,4 @@
 class Referral < ActiveRecord::Base
-    extend Dragonfly::Model
     is_impressionable :counter_cache => true
     include Rails.application.routes.url_helpers
 

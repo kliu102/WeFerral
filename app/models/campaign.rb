@@ -14,12 +14,20 @@ class Campaign < ActiveRecord::Base
             foreign_key: :campaign_id
 
     scope :active, -> { where(status: 'launched') }
-    delegate :master_image, to: :master_pledge
 
     cattr_accessor :search_scopes do
         []
     end
+
+    has_many :images
+
+    has_one :master_image, -> { where is_master: true },
+            inverse_of: :campaign,
+            class_name: 'Image',
+            foreign_key: :campaign_id
+
     accepts_nested_attributes_for :campaign_pledges, :allow_destroy => true #, :reject_if => lambda { |a| a[:content].blank?}
+    accepts_nested_attributes_for :images, :allow_destroy => true #, :reject_if => lambda { |a| a[:content].blank?}
 
     def self.add_search_scope(name, &block)
         self.singleton_class.send(:define_method, name.to_sym, &block)

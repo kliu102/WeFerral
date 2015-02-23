@@ -6,13 +6,6 @@ class CampaignPledge < ActiveRecord::Base
 
     belongs_to :campaign
     has_many :referrals, as: :referable
-    has_many :images
-
-    has_one :master_image, -> { where is_master: true },
-            inverse_of: :campaign_pledge,
-            class_name: 'Image',
-            foreign_key: :campaign_pledge_id
 
     scope :active, -> { where(status: 'launched') }
-    accepts_nested_attributes_for :images, :allow_destroy => true #, :reject_if => lambda { |a| a[:content].blank?}
 end

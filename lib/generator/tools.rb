@@ -29,27 +29,26 @@ class Generator::Tools
                 status: 'launched'
         )
         create_campaign_pledges(campaign)
+        create_campaign_images(campaign)
         merchant.campaigns << campaign
     end
 
     def self.create_campaign_pledges(campaign)
         2.times do |i|
-            campaign_pledge = CampaignPledge.new(
+            campaign.campaign_pledges << CampaignPledge.new(
                     total_budget: 10000,
                     unit_budget: 10,
                     title: 'awesome campaign pledge',
                     description: 'Logs an impression... and I use that term loosely. It can log page impressions (technically action impressions), but it is not limited to that. You can log impressions multiple times per request. And you can also attach it to a model. The goal of this project is to provide customizable stats that are immediately accessible in your application as opposed to using Google Analytics and pulling data using their API. You can attach custom messages to impressions. No reporting yet.. this thingy just creates the data.',
                     status: 'launched'
             )
-            create_campaign_pledge_images(campaign_pledge)
-            campaign.campaign_pledges << campaign_pledge
         end
         campaign.campaign_pledges.first.update_attributes(:is_master => true)
     end
 
-    def self.create_campaign_pledge_images(campaign_pledge)
-        campaign_pledge.images << Image.new(image: File.open("./public/images/samples/#{rand(11) + 1}.jpg"), is_master: true)
-        campaign_pledge.images << Image.new(image: File.open("./public/images/samples/#{rand(11) + 1}.jpg"))
+    def self.create_campaign_images(campaign)
+        campaign.images << Image.new(image: File.open("./public/images/samples/#{rand(11) + 1}.jpg"), is_master: true)
+        campaign.images << Image.new(image: File.open("./public/images/samples/#{rand(11) + 1}.jpg"))
     end
 
     def self.create_user(i)

@@ -21,8 +21,13 @@
       Permalink : <%= f.text_field :permalink %><br />
       start_at    : <%= f.datetime_select :start_at %><br />
       expired_at  : <%= f.datetime_select :expired_at %><br />
-
       <hr>
+      <%= f.fields_for :images, :html => { :multipart => true } do |builder| %>
+          <%= render 'images/form', :f => builder %>
+      <% end %>
+      <p>
+        <%= link_to_add_fields "Add Image", f, :images %>
+      </p>
       <%= f.fields_for :campaign_pledges do |builder| %>
           <%= render 'campaign_pledges/form', :f => builder %>
       <% end %>
