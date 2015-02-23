@@ -1,37 +1,38 @@
 <%= javascript_include_tag 'merchant_fields.js' %>
+<div class="col-md-8">
+  <%= form_for(@campaign) do |f| %>
+      <% if @campaign.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
 
-<%= form_for(@campaign) do |f| %>
-    <% if @campaign.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+            <ul>
+              <% @campaign.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
 
-          <ul>
-            <% @campaign.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+      <div class="actions">
+        <%= hidden_field(:campaign, :merchant_user_id) %>
+        <%= f.hidden_field :id %>
+        Title: <%= f.text_field :title %><br/>
+        Description : <%= f.text_area :description %><br/>
+        Permalink : <%= f.text_field :permalink %><br/>
+        start_at : <%= f.datetime_select :start_at %><br/>
+        expired_at : <%= f.datetime_select :expired_at %><br/>
+        <hr>
+        <%= f.fields_for :images, :html => {:multipart => true} do |builder| %>
+            <%= render 'images/form', :f => builder %>
+        <% end %>
+        <div>
+          <%= link_to_add_fields "Add Image", f, :images %>
         </div>
-    <% end %>
-
-    <div class="actions">
-      <%= hidden_field(:campaign, :merchant_user_id) %>
-      <%= f.hidden_field :id %>
-      Title: <%= f.text_field :title %><br />
-      Description : <%= f.text_area :description %><br />
-      Permalink : <%= f.text_field :permalink %><br />
-      start_at    : <%= f.datetime_select :start_at %><br />
-      expired_at  : <%= f.datetime_select :expired_at %><br />
-      <hr>
-      <%= f.fields_for :images, :html => { :multipart => true } do |builder| %>
-          <%= render 'images/form', :f => builder %>
-      <% end %>
-      <p>
-        <%= link_to_add_fields "Add Image", f, :images %>
-      </p>
-      <%= f.fields_for :campaign_pledges do |builder| %>
-          <%= render 'campaign_pledges/form', :f => builder %>
-      <% end %>
-      <p><%= link_to_add_fields "Add Pledge", f, :campaign_pledges %></p>
-      <%= f.submit %>
-    </div>
-<% end %>
+        <%= f.fields_for :campaign_pledges do |builder| %>
+            <%= render 'campaign_pledges/form', :f => builder %>
+        <% end %>
+        <div><%= link_to_add_fields "Add Pledge", f, :campaign_pledges %></div>
+        <%= f.submit %>
+      </div>
+  <% end %>
+</div>
