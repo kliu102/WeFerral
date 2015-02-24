@@ -8,6 +8,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :merchant_user, dependent: :destroy
   has_many :campaign_pledges
   has_many :referrals, as: :referable
+  has_many :addresses, as: :addressable
   has_one :master_pledge, -> { where is_master: true },
           inverse_of: :campaign,
           class_name: 'CampaignPledge',

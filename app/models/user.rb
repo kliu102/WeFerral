@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
 
   has_many :referrals
   has_many :transactions
+  has_many :addresses, as: :addressable
 end

@@ -7,4 +7,5 @@ class MerchantUser < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :campaigns
+  has_many :addresses, as: :addressable
 end
