@@ -1,6 +1,6 @@
 <div class="fields">
   <%= f.file_field :image, :onchange => "handleFileSelect(this)" %>
-  <%= image_tag f.object.image.url unless f.object.id.nil?%>
+  <%= image_tag f.object.image.url unless f.object.id.nil? %>
   <%= link_to_remove_fields "remove", f %>
   <%= f.hidden_field :id %>
 </div>

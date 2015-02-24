@@ -92,12 +92,12 @@ describe Article do
   context '#save' do
     subject { article }
     let(:array) { [1, 2, 3] }
-    
+
     its(:save) { should be_truthy }
 
     context 'when change array field' do
       before { article.some_array = array }
-      its(:save) { should be_truthy }      
+      its(:save) { should be_truthy }
     end
   end
 end

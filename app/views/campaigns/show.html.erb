@@ -1,44 +1,44 @@
 <div class="row" id="myCampaign">
   <div class="col-md-8">
-  <%= render :partial => 'shared/campaign', :locals => {:campaign => @campaign}%>
+    <%= render :partial => 'shared/campaign', :locals => {:campaign => @campaign} %>
   </div>
-    <div class="col-md-12">
-        <% if @referral %>
-          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-              <span class="glyphicon glyphicon-hand-up"></span>
-              <%= I18n.t :share %>
-              <i class="fa fa-weixin"></i>
-          </a>
+  <div class="col-md-12">
+    <% if @referral %>
+        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+          <span class="glyphicon glyphicon-hand-up"></span>
+          <%= I18n.t :share %>
+          <i class="fa fa-weixin"></i>
+        </a>
 
-          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-              <span class="glyphicon glyphicon-hand-up"></span>
-              <%= I18n.t :share %>
-              <i class="fa fa-weibo"></i>
-          </a>
+        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+          <span class="glyphicon glyphicon-hand-up"></span>
+          <%= I18n.t :share %>
+          <i class="fa fa-weibo"></i>
+        </a>
 
-          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-              <span class="glyphicon glyphicon-hand-up"></span>
-              <%= I18n.t :share %>
-              <i class="fa fa-facebook"></i>
-          </a>
+        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+          <span class="glyphicon glyphicon-hand-up"></span>
+          <%= I18n.t :share %>
+          <i class="fa fa-facebook"></i>
+        </a>
 
-          <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
-              <span class="glyphicon glyphicon-hand-up"></span>
-              <%= I18n.t :share %>
-              <i class="fa fa-twitter"></i>
-          </a>
-          <%= social_share_button_tag(@referral.referral_url) %>
-          <pre>
-            <%= @referral.referral_url%>
+        <a href="#myModal" role="button" class="btn btn-warning" data-toggle="modal">
+          <span class="glyphicon glyphicon-hand-up"></span>
+          <%= I18n.t :share %>
+          <i class="fa fa-twitter"></i>
+        </a>
+        <%= social_share_button_tag(@referral.referral_url) %>
+        <pre>
+            <%= @referral.referral_url %>
           </pre>
-        <% else %>
-          <%= form_for :referral, url: campaign_referral_path(@campaign.permalink), :html => { :id => 'referral_form' } do |f| %>
+    <% else %>
+        <%= form_for :referral, url: campaign_referral_path(@campaign.permalink), :html => {:id => 'referral_form'} do |f| %>
             <%= hidden_field(:campaign, :referral_uuid) %>
             <%= link_to 'javascript:{}', onclick: "document.getElementById('referral_form').submit();", role: 'button', class: 'btn btn-warning btn-lg' do %>
-              <span class="glyphicon glyphicon-hand-up"></span>
-              <%= I18n.t :willing_to_share %>
+                <span class="glyphicon glyphicon-hand-up"></span>
+                <%= I18n.t :willing_to_share %>
             <% end %>
-          <% end %>
         <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>

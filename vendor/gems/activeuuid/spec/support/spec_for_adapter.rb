@@ -14,7 +14,7 @@ module ActiveUUID::SpecSupport
 
     def run(connection)
       name = connection.adapter_name.downcase.to_sym
-      @specs[name].call() if(@specs.include? name)
+      @specs[name].call() if (@specs.include? name)
     end
   end
 end

@@ -6,7 +6,9 @@ module UUIDTools
     alias_method :id, :raw
 
     # duck typing activerecord 3.1 dirty hack )
-    def gsub *; self; end
+    def gsub *;
+      self;
+    end
 
     def next
       self.class.random_create
@@ -27,16 +29,16 @@ module UUIDTools
 
     def self.serialize(value)
       case value
-      when self
-        value
-      when String
-        parse_string value
-      else
-        nil
+        when self
+          value
+        when String
+          parse_string value
+        else
+          nil
       end
     end
 
-  private
+    private
 
     def self.parse_string(str)
       return nil if str.length == 0
@@ -133,10 +135,10 @@ module ActiveUUID
         UUIDTools::UUID.sha1_create(_uuid_namespace || UUIDTools::UUID_OID_NAMESPACE, chained)
       else
         case _uuid_generator
-        when :random
-          UUIDTools::UUID.random_create
-        when :time
-          UUIDTools::UUID.timestamp_create
+          when :random
+            UUIDTools::UUID.random_create
+          when :time
+            UUIDTools::UUID.timestamp_create
         end
       end
     end

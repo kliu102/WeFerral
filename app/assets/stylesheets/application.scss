@@ -8,40 +8,40 @@
    Navbar
    -------------------------------------- */
 #searchInput {
-    width: 200px;
+  width: 200px;
 }
 
 .navbar-brand {
-    padding: 13px 15px;
+  padding: 13px 15px;
 }
 
 footer {
-    background: #333;
-    color: #eee;
-    font-size: 11px;
-    padding: 20px;
+  background: #333;
+  color: #eee;
+  font-size: 11px;
+  padding: 20px;
 }
 
 /* --------------------------------------
    Typography
    -------------------------------------- */
 body {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizedlegibility;
-    padding-top: 60px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizedlegibility;
+  padding-top: 60px;
 }
 
 .well .page-header {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .well .page-header h1 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 ul.unstyled {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 /* --------------------------------------
@@ -49,69 +49,69 @@ ul.unstyled {
    -------------------------------------- */
 
 .carousel-caption {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .carousel-caption h4 {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 #myCarousel .item {
-    height: 400px;
+  height: 400px;
 }
 
 .carousel-inner .item {
-    background: top center no-repeat;
-    background-size: cover;
+  background: top center no-repeat;
+  background-size: cover;
 }
 
 .carousel-inner .item .active {
-    background: top center no-repeat;
+  background: top center no-repeat;
 }
 
 .thumbnails {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .thumbnails {
-    position: relative;
+  position: relative;
 }
 
 .thumbnails h3 {
-    font-size: 16px;
-    margin: 0 0 10px;
-    line-height: 20px;
+  font-size: 16px;
+  margin: 0 0 10px;
+  line-height: 20px;
 }
 
 .thumbnails .price {
-    font-size: 22px;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    padding: 10px;
+  font-size: 22px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px;
 }
 
 .thumbnails .price sup {
-    font-weight: normal;
-    font-size: 12px;
+  font-weight: normal;
+  font-size: 12px;
 }
 
 .thumbnail span.glyphicon {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 @media (max-width: 979px) {
-    body {
-        padding-top: 0px;
-    }
+  body {
+    padding-top: 0px;
+  }
 }
 
 /*-------------------
 social_share_button
 --------------------*/
 .social-share-button-facebook {
-//  display: inline-block;
-//  width: 32px;
-//  height: 32px;
-//  background: url("/social/facebook.png") no-repeat;
+  //  display: inline-block;
+  //  width: 32px;
+  //  height: 32px;
+  //  background: url("/social/facebook.png") no-repeat;
 }

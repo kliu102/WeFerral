@@ -42,11 +42,11 @@ ActiveAdmin.setup do |config|
   config.load_paths = [File.join(Rails.root, 'app', 'merchant')]
 
   config.namespace :merchant do |merchant|
-        merchant.site_title = "Custom Admin Title"
-        merchant.current_user_method = :current_merchant_user
-        merchant.logout_link_path = :destroy_merchant_user_session_path
-        merchant.logout_link_method = :delete
-        merchant.authentication_method = :authenticate_merchant_user!
+    merchant.site_title = "Custom Admin Title"
+    merchant.current_user_method = :current_merchant_user
+    merchant.logout_link_path = :destroy_merchant_user_session_path
+    merchant.logout_link_method = :delete
+    merchant.authentication_method = :authenticate_merchant_user!
   end
   #
   # This will ONLY change the title for the admin section. Other
