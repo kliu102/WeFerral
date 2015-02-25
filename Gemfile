@@ -5,8 +5,6 @@ source 'https://rubygems.org'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'aasm', '~> 4.0.8'
-gem 'active_model_serializers'
-gem 'angularjs-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.10'
 gem 'bootstrap-sass', '~> 3.3.3'
@@ -25,6 +23,7 @@ gem 'impressionist', '~> 1.5.1'
 gem 'jbuilder', '~> 2.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 4.0.3'
+gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'kaminari', '~> 0.16.3'
 gem 'lazy_high_charts', '~> 1.5.4'
 gem 'mysql2', '~> 0.3.18'
@@ -41,6 +40,8 @@ gem 'sass-rails', '~> 5.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'social-share-button'
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks', '~>2.5.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'yui-compressor', '~> 0.12.0'
