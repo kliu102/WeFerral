@@ -16,4 +16,9 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require social-share-button
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/we_ferral
 //= require_tree .

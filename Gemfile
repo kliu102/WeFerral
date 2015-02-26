@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'aasm', '~> 4.0.8'
+gem 'active_model_serializers', '~> 0.9.3'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.10'
 gem 'bootstrap-sass', '~> 3.3.3'
@@ -70,6 +71,7 @@ end
 # vender gems
 # gem 'activeadmin', :path => 'vendor/gems/activeadmin'
 gem 'activeadmin', :git => 'git@github.com:kliu102/activeadmin.git', :branch => 'master'
+gem 'rails-backbone', :github => 'codebrew/backbone-rails'
 gem 'activeuuid', :path => 'vendor/gems/activeuuid'
 
 
