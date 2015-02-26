@@ -117,6 +117,10 @@ zh-CN:
       merchant_user:
         signed_in: "登录成功"
     user:
+      change_password: "修改密码"
+      edit: "编辑"
+      email: "邮箱"
+      my_account: "账户"
       unauthenticated: "请您登录"
   errors:
     format: ! '%{attribute}%{message}'
@@ -166,7 +170,6 @@ zh-CN:
       submit: 储存%{model}
       update: 更新%{model}
   latest_campaigns: "最新推荐"
-  my_account: "账户"
   number:
     currency:
       format:

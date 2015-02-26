@@ -1,7 +1,7 @@
 class CreateReferrals < ActiveRecord::Migration
   def self.up
     create_table :referrals do |t|
-      t.belongs_to :user, index: true
+      t.belongs_to :users, index: true
       t.references :parent, null: true, index: true
       t.uuid :uuid, null: false, index: true, unique: true
       t.string :status, null: false

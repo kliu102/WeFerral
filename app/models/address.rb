@@ -17,4 +17,17 @@ class Address < ActiveRecord::Base
   def clone
     self.class.new(self.attributes.except('id', 'updated_at', 'created_at'))
   end
+
+  def self.build_default
+    country = Country.find_by_iso_name('CHINA') rescue Country.first
+    new(country: country)
+  end
+
+  def self.default(user = nil)
+    if user
+      user.send(:'address') || build_default
+    else
+      build_default
+    end
+  end
 end

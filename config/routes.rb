@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   devise_for :merchant_users
   #devise_for :admins
   devise_for :users
+  get 'users/:id', to: 'users#show', as: 'user'
+  get 'users/:id/edit', to: 'users#edit', as: 'edit/user'
+  put 'users', to: 'users#update', as: 'update/user'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

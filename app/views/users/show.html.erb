@@ -1,0 +1,62 @@
+<div class="container">
+
+  <!-------->
+  <div id="content">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+      <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+      <li><a href="#orders" data-toggle="tab">My Orders</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="profile">
+        <div class="panel panel-green">
+          <div class="panel-heading"><%= I18n.t('devise.user.email') %></div>
+          <div class="panel-body">
+            <%= @user.email %> (<%= link_to I18n.t('devise.user.edit'), edit_user_path %>)
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="orders">
+
+        <div data-hook="account_my_orders" class="account-my-orders">
+          <h3 class="primary-font"><%= I18n.t(:my_orders) %></h3>
+          <% if @orders.present? %>
+              <table class="order-summary">
+                <thead>
+                <tr>
+                  <th class="order-number"><%= I18n.t(:number) %></th>
+                  <th class="order-date"><%= I18n.t(:date) %></th>
+                  <th class="order-status"><%= I18n.t(:status) %></th>
+                  <th class="order-payment-state"><%= I18n.t(:payment_state) %></th>
+                  <th class="order-shipment-state"><%= I18n.t(:shipment_state) %></th>
+                  <th class="order-total"><%= I18n.t(:total) %></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @orders.each do |order| %>
+                    <tr class="<%= cycle('even', 'odd') %>">
+                      <td class="order-number"><%= link_to order.id.to_s, order_url(order) %></td>
+                      <td class="order-date"><%= I18n.l order.completed_at.to_date %></td>
+                      <td class="order-status"><%= order.state.titleize %></td>
+                      <td class="order-payment-state"><%= I18n.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+                      <td class="order-shipment-state"><%= I18n.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+                      <td class="order-total"><%= order.display_total %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+          <% else %>
+              <p><%= I18n.t(:you_have_no_orders_yet) %></p>
+          <% end %>
+          <br/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+          $('#tabs').tab();
+      });
+  </script>
+</div> <!-- container -->

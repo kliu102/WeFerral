@@ -1,0 +1,11 @@
+<%= render :partial => 'shared/error_messages', :locals => { :target => @user } %>
+
+<h1><%= I18n.t(:editing_user) %></h1>
+<dd>(<%= link_to I18n.t(:change_password), edit_user_registration_path %>)</dd>
+
+<%= form_for User.new, :as => @user, :url => update_user_path, :method => :put do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <p>
+    <%= f.submit I18n.t(:update), :class => 'button primary' %>
+  </p>
+<% end %>

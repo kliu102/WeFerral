@@ -1,7 +1,7 @@
 class CreateTransactions < ActiveRecord::Migration
   def self.up
     create_table :transactions do |t|
-      t.belongs_to :user, index: true
+      t.belongs_to :users, index: true
       t.belongs_to :campaign_pledge, index: true
       t.float :amount, null: false
       t.uuid :uuid, null: false
