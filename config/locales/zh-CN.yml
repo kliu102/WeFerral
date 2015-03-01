@@ -9,6 +9,14 @@ zh-CN:
     permalink: "永久链接"
     start_at: "开始时间"
     title: "标题"
+  address:
+    street_address: "街道"
+    street_address_2: "街道2"
+    country: "国家"
+    city: "城市"
+    phone_number: "电话号码"
+    postal_code: "邮编"
+    state: "省"
   campaign: "推广"
   choice: "选择"
   date:
@@ -122,6 +130,7 @@ zh-CN:
       email: "邮箱"
       my_account: "账户"
       unauthenticated: "请您登录"
+  editing_user: "编辑账户"
   errors:
     format: ! '%{attribute}%{message}'
     messages:
@@ -254,3 +263,4 @@ zh-CN:
       short: ! '%b%d日 %H:%M'
     pm: 下午
   willing_to_share: "我要分享"
+  update: "更新"

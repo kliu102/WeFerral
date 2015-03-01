@@ -1,7 +1,7 @@
 <%= render :partial => 'shared/error_messages', :locals => { :target => @user } %>
 
 <h1><%= I18n.t(:editing_user) %></h1>
-<dd>(<%= link_to I18n.t(:change_password), edit_user_registration_path %>)</dd>
+<dd>(<%= link_to I18n.t('devise.user.change_password'), edit_user_registration_path %>)</dd>
 
 <div class="col-md-8">
   <%= form_for(@user) do |f| %>

@@ -2,41 +2,41 @@
 
 <div id="<%= type %>" data-hook="address_fields">
   <div class="field <%= "#{type}-row" %>">
-    <%= f.label :address1, I18n.t(:street_address) %>
+    <%= f.label :address1, I18n.t('address.street_address') %>
     <%= f.text_field :address1, :class => 'fullwidth' %>
   </div>
 
   <div class="field <%= "#{type}-row" %>">
-    <%= f.label :address2, I18n.t(:street_address_2) %>
+    <%= f.label :address2, I18n.t('address.street_address_2') %>
     <%= f.text_field :address2, :class => 'fullwidth' %>
   </div>
 
   <div class="field <%= "#{type}-row" %>">
-    <%= f.label :city, I18n.t(:city) %>
+    <%= f.label :city, I18n.t('address.city') %>
     <%= f.text_field :city, :class => 'fullwidth' %>
   </div>
 
   <div class="field <%= "#{type}-row" %>">
-    <%= f.label :postal_code, I18n.t(:postal_code) %>
+    <%= f.label :postal_code, I18n.t('address.postal_code') %>
     <%= f.text_field :postal_code, :class => 'fullwidth' %>
   </div>
 
   <div class="field <%= "#{type}-row" %>">
-    <%= f.label :state_id, I18n.t(:state) %>
+    <%= f.label :state_id, I18n.t('address.state') %>
     <span id="<%= s_or_b %>state">
       <%= f.collection_select :state_id, f.object.country.states.sort, :id, :name, {:include_blank => true}, {:class => 'select2 fullwidth', :style => "display: #{f.object.country.states.empty? ? 'none' : 'block' };", :disabled => f.object.country.states.empty?} %>
     </span>
   </div>
 
   <div class="field <%= "#{type}-row" %>">
-    <%= f.label :country_id, I18n.t(:country) %>
+    <%= f.label :country_id, I18n.t('address.country') %>
     <span id="<%= s_or_b %>country">
       <%= f.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'select2 fullwidth'} %>
     </span>
   </div>
 
   <div class="field <%= "#{type}-row" %>">
-    <%= f.label :phone_number, I18n.t(:phone_number) %>
+    <%= f.label :phone_number, I18n.t('address.phone_number') %>
     <%= f.phone_field :phone_number, :class => 'fullwidth' %>
   </div>
 </div>
