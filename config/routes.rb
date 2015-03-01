@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
   resources :referrals
-  # resources :campaign_pledges
   # get 'campaign_pledges/:permalink' => 'campaign_pledges#show', as: 'campaign_pledge'
 
   resources :campaigns, only: [:index, :show, :update, :create]
   post 'campaigns/referral/:permalink' => 'campaigns#refer', as: 'campaign_referral'
 
   devise_for :merchant_users
-  #devise_for :admins
   devise_for :users
-  get 'users/:id', to: 'users#show', as: 'user'
-  get 'users/:id/edit', to: 'users#edit', as: 'edit/user'
-  put 'users', to: 'users#update', as: 'update/user'
+  resources :users
+
+  get 'countries/:id', to: 'countries#show', as: 'country'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

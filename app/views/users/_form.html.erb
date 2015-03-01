@@ -1,9 +1,0 @@
-<div data-hook="bill_address_wrapper" class="alpha six columns">
-  <fieldset class="no-border-bottom">
-    <legend align="center"><%= I18n.t(:billing_address) %></legend>
-    <%= f.fields_for :address, (@user.address || Address.default(@user)) do |ba_form| %>
-      <% ba_form.object ||=Address.new(country: Country.new) %>
-      <%= render :partial => 'shared/address_form', :locals => { :f => ba_form, :type => "billing" } %>
-    <% end %>
-  </fieldset>
-</div>

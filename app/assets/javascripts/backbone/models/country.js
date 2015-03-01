@@ -1,0 +1,1 @@
+var Country = Backbone.Model.extend({urlRoot: '/countries'});

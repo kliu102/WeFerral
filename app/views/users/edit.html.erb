@@ -3,9 +3,16 @@
 <h1><%= I18n.t(:editing_user) %></h1>
 <dd>(<%= link_to I18n.t(:change_password), edit_user_registration_path %>)</dd>
 
-<%= form_for User.new, :as => @user, :url => update_user_path, :method => :put do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-  <p>
-    <%= f.submit I18n.t(:update), :class => 'button primary' %>
-  </p>
+<div class="col-md-8">
+  <%= form_for(@user) do |f| %>
+      <div class="actions">
+        <%= f.fields_for :address, (@user.address || Address.default(@user)) do |ba_form| %>
+            <% ba_form.object ||= Address.new(country: Country.new) %>
+            <%= render :partial => 'shared/address_form', :locals => { :f => ba_form, :type => "billing" } %>
+        <% end %>
+        <p>
+          <%= f.submit I18n.t(:update), :class => 'button primary' %>
+        </p>
+      </div>
 <% end %>
+</div>
