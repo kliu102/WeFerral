@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   has_many :referrals
   has_many :transactions
   has_one :address, as: :addressable
+  accepts_nested_attributes_for :address, :allow_destroy => true
 end
